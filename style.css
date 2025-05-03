@@ -1,109 +1,103 @@
-/* Header */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4fdff;
+  color: #222;
+}
+
 header {
-  background-color: #003049;
-  padding: 1rem 2rem;
+  background-color: #023047;
+  color: white;
+  padding: 10px 30px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .logo {
-  height: 60px; /* Aumentado el tamaño */
+  height: 40px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 25px;
+  margin: 0;
+  padding: 0;
 }
 
 nav a {
   color: white;
-  margin-left: 20px;
-  font-weight: bold;
   text-decoration: none;
-}
-
-body {
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  background-color: #f1fbfd;
-  color: #111;
-}
-
-main {
-  padding: 2rem;
+  font-weight: bold;
 }
 
 h2 {
   text-align: center;
-  font-size: 1.8rem;
-  margin-bottom: 1.5rem;
+  margin-top: 40px;
+  font-size: 28px;
 }
 
-/* Cards */
 .card-container {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
   flex-wrap: wrap;
+  gap: 25px;
+  padding: 30px;
 }
 
 .card {
-  background: #fff;
-  padding: 1rem;
-  border-radius: 10px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 20px;
   text-align: center;
-  width: 260px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.06);
+  width: 250px;
 }
 
 .card img {
-  height: 50px;
-  margin-bottom: 1rem;
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .card strong {
-  color: #0077cc;
+  display: block;
+  margin-top: 10px;
+  font-size: 18px;
+  color: #0077b6;
 }
 
-/* Robot Info */
-.robot-info {
+.fleet-images {
   display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  align-items: center;
   justify-content: center;
-  margin-top: 2rem;
+  gap: 40px;
+  padding: 20px 0;
 }
 
-.robot-img {
-  width: 320px;
-  max-width: 100%;
-  border-radius: 8px;
+.fleet-images img {
+  max-height: 180px;
+  width: auto;
 }
 
-.robot-text {
-  max-width: 500px;
-  font-size: 1rem;
-  line-height: 1.5;
-}
-
-/* Van */
-.van-container {
-  text-align: center;
-  margin-top: 2rem;
-}
-
-.van-img {
-  width: 400px;
-  max-width: 90%;
-}
-
-/* Contact */
 #contact {
+  padding: 30px;
   text-align: center;
-  margin-top: 3rem;
+}
+
+#contact a {
+  color: #0077b6;
+  text-decoration: none;
 }
 
 footer {
-  background-color: #003049;
+  background-color: #023047;
   color: white;
   text-align: center;
-  padding: 1rem;
-  margin-top: 3rem;
+  padding: 15px;
+  font-size: 14px;
 }
