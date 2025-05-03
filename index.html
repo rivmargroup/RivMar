@@ -7,10 +7,9 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Encabezado -->
     <header>
         <div class="container">
-            <div class="logo">RIVMAR</div>
+            <h1>RivMar Group</h1>
             <nav>
                 <a href="#services">Services</a>
                 <a href="#pricing">Pricing</a>
@@ -19,73 +18,44 @@
         </div>
     </header>
 
-    <!-- Sección principal -->
-    <section class="hero">
-        <div class="overlay">
-            <h1>Robotic Boat Hull Cleaning</h1>
-            <p>Advanced cleaning with before & after visuals</p>
-        </div>
-    </section>
+    <main>
+        <section id="services" class="section">
+            <h2>Our Services</h2>
+            <ul>
+                <li>Hull Inspection with Photos</li>
+                <li>Robotic Hull Cleaning</li>
+                <li>Hull Cleaning with Before/After Video</li>
+            </ul>
+        </section>
 
-    <!-- Servicios -->
-    <section id="services" class="section">
-        <h2>Our Services</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Inspection</h3>
-                <p>Hull inspection with HD photos</p>
+        <section id="pricing" class="section">
+            <h2>Pricing</h2>
+            <div class="pricing">
+                <div class="card">
+                    <h3>Basic</h3>
+                    <p>Inspection + Photos</p>
+                    <p>$2.50/ft</p>
+                </div>
+                <div class="card">
+                    <h3>Standard</h3>
+                    <p>Cleaning + Status Record</p>
+                    <p>$2.75/ft</p>
+                </div>
+                <div class="card">
+                    <h3>Premium</h3>
+                    <p>Cleaning + Photos + Video</p>
+                    <p>$3.00/ft</p>
+                </div>
             </div>
-            <div class="card">
-                <h3>Cleaning</h3>
-                <p>Robotic underwater hull cleaning</p>
-            </div>
-            <div class="card">
-                <h3>Video Report</h3>
-                <p>Before & after HD video report</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Precios -->
-    <section id="pricing" class="section">
-        <h2>Pricing</h2>
-        <div class="cards">
-            <div class="card">
-                <h3>Basic</h3>
-                <p>Inspection only<br><strong>$2.50/ft</strong></p>
-            </div>
-            <div class="card">
-                <h3>Standard</h3>
-                <p>Cleaning + Inspection<br><strong>$2.75/ft</strong></p>
-            </div>
-            <div class="card">
-                <h3>Premium</h3>
-                <p>Cleaning + Photos + Video<br><strong>$3.00/ft</strong></p>
-            </div>
-        </div>
-    </section>
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <p>Email: rivmargroup@gmail.com</p>
+            <p>Phone: 786-366-9294</p>
+        </section>
+    </main>
 
-    <!-- Contacto -->
-    <section id="contact" class="section">
-        <h2>Contact Us</h2>
-        <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
-        <p>Phone: <a href="tel:+17863669294">(786) 366-9294</a></p>
-
-        <form action="mailto:rivmargroup@gmail.com" method="POST" enctype="text/plain" style="margin-top: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">
-            <div style="margin-bottom: 10px;">
-                <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 10px;" />
-            </div>
-            <div style="margin-bottom: 10px;">
-                <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 10px;" />
-            </div>
-            <div style="margin-bottom: 10px;">
-                <textarea name="message" rows="5" placeholder="Your Message" required style="width: 100%; padding: 10px;"></textarea>
-            </div>
-            <button type="submit" style="padding: 10px 20px; background-color: #002e4d; color: white; border: none; cursor: pointer;">Send Message</button>
-        </form>
-    </section>
-
-    <!-- Pie de página -->
     <footer>
         <p>&copy; 2025 RivMar Group. All rights reserved.</p>
     </footer>
