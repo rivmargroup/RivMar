@@ -5,6 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RivMar Group</title>
   <link rel="stylesheet" href="styles.css" />
+  <script>
+    function changeLanguage(lang) {
+      const text = {
+        en: {
+          services: "Services",
+          pricing: "Pricing",
+          contact: "Contact",
+          robotic: "Robotic Boat Hull Cleaning",
+          subtitle: "Advanced technology for pristine results – before and after visuals included.",
+          stayUpdated: "Stay Updated",
+          contactTitle: "Contact"
+        },
+        es: {
+          services: "Servicios",
+          pricing: "Precios",
+          contact: "Contacto",
+          robotic: "Limpieza Robótica de Casco de Barco",
+          subtitle: "Tecnología avanzada para resultados impecables – incluye visuales antes y después.",
+          stayUpdated: "Mantente Informado",
+          contactTitle: "Contacto"
+        }
+      };
+      document.querySelector('a[href="#services"]').textContent = text[lang].services;
+      document.querySelector('a[href="#pricing"]').textContent = text[lang].pricing;
+      document.querySelector('a[href="#contact"]').textContent = text[lang].contact;
+      document.querySelector(".hero-text h1").textContent = text[lang].robotic;
+      document.querySelector(".hero-text p").textContent = text[lang].subtitle;
+      document.querySelector(".subscribe h2").textContent = text[lang].stayUpdated;
+      document.querySelector("#contact h2").textContent = text[lang].contactTitle;
+    }
+  </script>
 </head>
 <body>
   <header class="hero-header">
@@ -15,8 +46,8 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><button>EN</button></li>
-        <li><button>ES</button></li>
+        <li><button onclick="changeLanguage('en')">EN</button></li>
+        <li><button onclick="changeLanguage('es')">ES</button></li>
       </ul>
     </nav>
     <div class="hero-text">
@@ -90,8 +121,12 @@
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
-      <p>Phone: <a href="tel:+17863669294">+1 (786) 366-9294</a></p>
+      <form action="https://formspree.io/f/maylqnnv" method="POST" class="contact-form">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
     </section>
   </main>
 
