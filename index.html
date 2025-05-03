@@ -4,49 +4,65 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>RivMar Boat Hull Cleaning</title>
+    <title>RivMar | Robotic Hull Cleaning</title>
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <div class="logo">RIVMAR</div>
-        <nav>
-            <ul>
-                <li><a href="#services" data-i18n="services">Services</a></li>
-                <li><a href="#pricing" data-i18n="pricing">Pricing</a></li>
-                <li><a href="#contact" data-i18n="contact">Contact</a></li>
-            </ul>
-        </nav>
-        <div class="language-selector">
-            <button onclick="setLanguage('en')">EN</button>
-            <button onclick="setLanguage('es')">ES</button>
+        <div class="container">
+            <div class="logo">RIVMAR</div>
+            <nav>
+                <ul>
+                    <li><a href="#services" data-i18n="services">Services</a></li>
+                    <li><a href="#pricing" data-i18n="pricing">Pricing</a></li>
+                    <li><a href="#contact" data-i18n="contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="language-selector">
+                <button onclick="setLanguage('en')">EN</button>
+                <button onclick="setLanguage('es')">ES</button>
+            </div>
         </div>
     </header>
-    <main>
-        <section class="hero">
+
+    <section class="hero">
+        <div class="hero-text">
             <h1 data-i18n="hero_title">Robotic Boat Hull Cleaning</h1>
             <p data-i18n="hero_desc">Advanced technology for pristine results – before and after visuals included.</p>
-        </section>
-        <section id="services">
+        </div>
+    </section>
+
+    <section id="services" class="section">
+        <div class="container">
             <h2 data-i18n="services">Our Services</h2>
-            <ul>
-                <li data-i18n="service1">Hull cleaning with underwater robot</li>
-                <li data-i18n="service2">Photos and videos of before and after</li>
-                <li data-i18n="service3">Service record for every visit</li>
-            </ul>
-        </section>
-        <section id="pricing">
+            <div class="cards">
+                <div class="card" data-i18n="service1">Hull cleaning with underwater robot</div>
+                <div class="card" data-i18n="service2">Photos and videos of before and after</div>
+                <div class="card" data-i18n="service3">Service record for every visit</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="section alt">
+        <div class="container">
             <h2 data-i18n="pricing">Pricing</h2>
             <p data-i18n="price_text">Between $2.50 and $3.00 per foot depending on hull condition and service frequency.</p>
-        </section>
-        <section id="contact">
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container">
             <h2 data-i18n="contact">Contact Us</h2>
-            <p>Email: rivmargroup@gmail.com</p>
-            <p>Phone: +1 (786) 366-9294</p>
-        </section>
-    </main>
+            <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
+            <p>Phone: <a href="tel:+17863669294">+1 (786) 366-9294</a></p>
+        </div>
+    </section>
+
     <footer>
-        <p>&copy; 2025 RivMar Group. All rights reserved.</p>
+        <div class="container">
+            &copy; 2025 RivMar Group. All rights reserved.
+        </div>
     </footer>
     <script src="script.js"></script>
 </body>
