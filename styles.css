@@ -1,107 +1,39 @@
 body {
-  margin: 0;
   font-family: Arial, sans-serif;
-  background-color: #f2f7f9;
-}
-
-.top-nav {
-  background-color: #002d52;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1rem 2rem;
-}
-
-.top-nav .logo {
-  height: 50px;
-}
-
-.top-nav ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem;
   margin: 0;
   padding: 0;
+  background-color: #f5fcff;
 }
-
-.top-nav a, .top-nav button {
-  color: white;
-  text-decoration: none;
-  background: none;
-  border: none;
-  font-size: 1rem;
-  cursor: pointer;
-}
-
 .hero-header {
   position: relative;
-  text-align: center;
-  color: white;
 }
-
 .banner-image {
   width: 100%;
   height: auto;
-  display: block;
 }
-
+.top-nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 51, 102, 0.9);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 40px;
+}
+.logo {
+  height: 50px;
+}
+.top-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
 .hero-text {
   position: absolute;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-h1 {
-  font-size: 2.5rem;
-}
-
-h2 {
+  width: 100%;
   text-align: center;
-  color: #002d52;
-}
-
-.service-grid, .pricing-grid {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  padding: 2rem;
-}
-
-.service-box, .plan {
-  background-color: white;
-  border-radius: 10px;
-  padding: 1rem;
-  text-align: center;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-.robot-highlight {
-  display: flex;
-  gap: 2rem;
-  padding: 2rem;
-  align-items: center;
-}
-
-.robot-highlight img {
-  width: 300px;
-}
-
-.van-image {
-  display: block;
-  margin: 2rem auto;
-  width: 80%;
-}
-
-.subscribe {
-  background-color: #e0eff6;
-  padding: 2rem;
-  text-align: center;
-}
-
-footer {
-  background-color: #002d52;
+  transform: translateY(-50%);
   color: white;
-  text-align: center;
-  padding: 1rem;
 }
