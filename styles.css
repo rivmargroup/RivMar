@@ -171,3 +171,13 @@ footer {
   padding: 20px 0;
   margin-top: 40px;
 }
+
+footer p, footer a {
+  color: white;
+  margin: 5px 0;
+}
+
+#contact a {
+  color: #007bff;
+  text-decoration: none;
+}
