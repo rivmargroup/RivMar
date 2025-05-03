@@ -4,54 +4,74 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RivMar Group</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header>
-    <nav class="navbar">
+  <header class="hero-header">
+    <img src="assets/banner.png" alt="Banner Image" class="banner-image" />
+    <nav class="top-nav">
       <img src="assets/logo.png" alt="RivMar Logo" class="logo" />
       <button class="menu-toggle" onclick="toggleMenu()">☰</button>
-      <ul class="nav-links">
-        <li><a href="#services" data-translate="services">Services</a></li>
-        <li><a href="#pricing" data-translate="pricing">Pricing</a></li>
-        <li><a href="#contact" data-translate="contact">Contact</a></li>
+      <ul>
+        <li><a id="nav-services" href="#services">Services</a></li>
+        <li><a id="nav-pricing" href="#pricing">Pricing</a></li>
+        <li><a id="nav-contact" href="#contact">Contact</a></li>
         <li><button onclick="changeLanguage('en')">EN</button></li>
         <li><button onclick="changeLanguage('es')">ES</button></li>
       </ul>
     </nav>
-    <div class="banner-container">
-      <img src="assets/banner.png" alt="Banner Image" class="banner" />
-      <div class="hero-text">
-        <h1 data-translate="heroTitle">Robotic Boat Hull Cleaning</h1>
-        <p data-translate="heroSubtitle">Advanced technology for pristine results – before and after visuals included.</p>
-      </div>
+    <div class="hero-text">
+      <h1 id="hero-title">Robotic Boat Hull Cleaning</h1>
+      <p id="hero-subtitle">Advanced technology for pristine results – before and after visuals included.</p>
     </div>
   </header>
 
   <main>
     <section id="services">
-      <h2 data-translate="services">Services</h2>
-      <div class="grid">
-        <div class="card"><img src="assets/inspection-icon.png" alt=""><p><strong>Hull inspection with photos</strong></p></div>
-        <div class="card"><img src="assets/cleaning-icon.png" alt=""><p><strong>Hull cleaning with underwater robot</strong></p></div>
-        <div class="card"><img src="assets/video-icon.png" alt=""><p><strong>Hull cleaning with photos and video</strong></p></div>
+      <h2>Services</h2>
+      <div class="service-grid">
+        <div class="service-box">
+          <img src="assets/inspection-icon.png" alt="Inspection Icon" />
+          <p><strong>Hull inspection with photos</strong></p>
+        </div>
+        <div class="service-box">
+          <img src="assets/cleaning-icon.png" alt="Cleaning Icon" />
+          <p><strong>Hull cleaning with underwater robot</strong></p>
+        </div>
+        <div class="service-box">
+          <img src="assets/video-icon.png" alt="Video Icon" />
+          <p><strong>Hull cleaning with photos and video</strong></p>
+        </div>
       </div>
     </section>
 
     <section id="pricing">
-      <h2 data-translate="pricing">Pricing</h2>
-      <div class="grid">
-        <div class="plan"><h3>Basic</h3><p>Inspection + Photos</p><p><strong>$2.50/ft</strong></p></div>
-        <div class="plan recommended"><h3>Standard</h3><p>Cleaning + Service Record</p><p><strong>$2.75/ft</strong></p></div>
-        <div class="plan"><h3>Premium</h3><p>Cleaning + Photos & Video + Record</p><p><strong>$3.00/ft</strong></p></div>
+      <h2>Pricing</h2>
+      <div class="pricing-grid">
+        <div class="plan">
+          <h3>Basic</h3>
+          <p>Inspection + Photos</p>
+          <p><strong>$2.50/ft</strong></p>
+        </div>
+        <div class="plan recommended">
+          <h3>Standard</h3>
+          <p>Cleaning + Service Record</p>
+          <p><strong>$2.75/ft</strong></p>
+        </div>
+        <div class="plan">
+          <h3>Premium</h3>
+          <p>Cleaning + Photos & Video + Record</p>
+          <p><strong>$3.00/ft</strong></p>
+        </div>
       </div>
     </section>
 
-    <section class="robot-info">
+    <section class="robot-highlight">
       <img src="assets/robot.png" alt="Cleaning Robot" />
-      <div>
-        <h3 data-translate="precision">Efficiency and Precision</h3>
+      <div class="robot-text">
+        <h3>Efficiency and Precision</h3>
+        <p>Our underwater robot uses cutting-edge technology to clean your boat hull efficiently and safely. Enjoy full visual reports with photos and videos before and after each cleaning session.</p>
         <ul>
           <li>Consistent cleaning quality</li>
           <li>Minimized diver risks</li>
@@ -61,10 +81,10 @@
       </div>
     </section>
 
-    <img src="assets/van.png" alt="Van" class="van" />
+    <img src="assets/van.png" alt="Van" class="van-image" />
 
     <section class="subscribe">
-      <h2 data-translate="stayUpdated">Stay Updated</h2>
+      <h2 id="stay-updated">Stay Updated</h2>
       <form>
         <input type="email" placeholder="Enter your email" required />
         <button type="submit">Subscribe</button>
@@ -72,9 +92,9 @@
     </section>
 
     <section id="contact">
-      <h2 data-translate="contact">Contact</h2>
-      <p><strong data-translate="email">Email:</strong> <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
-      <p><strong data-translate="phone">Phone:</strong> <a href="tel:+17863669294">+1 (786) 366-9294</a></p>
+      <h2 id="contact-title">Contact</h2>
+      <p><strong id="email-label">Email:</strong> <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
+      <p><strong id="phone-label">Phone:</strong> <a href="tel:+17863669294">+1 (786) 366-9294</a></p>
     </section>
   </main>
 
