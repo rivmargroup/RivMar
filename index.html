@@ -1,105 +1,109 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>RivMar | Robotic Hull Cleaning</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RivMar Group</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">RIVMAR</div>
-            <nav>
-                <ul>
-                    <li><a href="#services" data-i18n="services">Services</a></li>
-                    <li><a href="#pricing" data-i18n="pricing">Pricing</a></li>
-                    <li><a href="#contact" data-i18n="contact">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="language-selector">
-                <button onclick="setLanguage('en')">EN</button>
-                <button onclick="setLanguage('es')">ES</button>
-            </div>
-        </div>
-    </header>
+  <header>
+    <img src="assets/ChatGPT Image May 3, 2025, 10_56_04 AM.png" alt="RivMar Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><button id="enBtn">EN</button></li>
+        <li><button id="esBtn">ES</button></li>
+      </ul>
+    </nav>
+  </header>
 
+  <main>
     <section class="hero">
-        <div class="hero-text">
-            <h1 data-i18n="hero_title">Robotic Boat Hull Cleaning</h1>
-            <p data-i18n="hero_desc">Advanced technology for pristine results – before and after visuals included.</p>
-        </div>
+      <h1 data-en="Robotic Boat Hull Cleaning" data-es="Limpieza Robótica de Casco de Bote">Robotic Boat Hull Cleaning</h1>
+      <p data-en="Advanced technology for pristine results – before and after visuals included."
+         data-es="Tecnología avanzada para resultados impecables, con imágenes del antes y después.">
+         Advanced technology for pristine results – before and after visuals included.
+      </p>
     </section>
 
-    <section id="services" class="section">
-        <div class="container">
-            <h2 data-i18n="services">Our Services</h2>
-            <div class="cards">
-                <div class="card" data-i18n="service1">Hull cleaning with underwater robot</div>
-                <div class="card" data-i18n="service2">Photos and videos of before and after</div>
-                <div class="card" data-i18n="service3">Service record for every visit</div>
-            </div>
+    <section id="services">
+      <h2 data-en="Services" data-es="Servicios">Services</h2>
+      <div class="service-grid">
+        <div class="service-box" data-en="Hull inspection with photos" data-es="Inspección del casco con fotos">
+          Hull inspection with photos
         </div>
+        <div class="service-box" data-en="Hull cleaning with underwater robot" data-es="Limpieza de casco con robot">
+          Hull cleaning with underwater robot
+        </div>
+        <div class="service-box" data-en="Hull cleaning with photos and video" data-es="Limpieza de casco con fotos y video">
+          Hull cleaning with photos and video
+        </div>
+      </div>
     </section>
 
-    <section id="pricing" class="section alt">
-        <div class="container">
-            <h2 data-i18n="pricing">Pricing</h2>
-            <div class="pricing-cards">
-                <div class="pricing-card">
-                    <h3 data-i18n="plan_basic">Basic Inspection</h3>
-                    <p class="price">$2.50 / ft</p>
-                    <ul>
-                        <li data-i18n="plan_basic_1">Visual hull inspection</li>
-                        <li data-i18n="plan_basic_2">High-res photos included</li>
-                    </ul>
-                </div>
-                <div class="pricing-card highlight">
-                    <h3 data-i18n="plan_standard">Standard Cleaning</h3>
-                    <p class="price">$2.75 / ft</p>
-                    <ul>
-                        <li data-i18n="plan_standard_1">Full hull cleaning by robot</li>
-                        <li data-i18n="plan_standard_2">Removes algae and debris</li>
-                    </ul>
-                </div>
-                <div class="pricing-card">
-                    <h3 data-i18n="plan_premium">Premium Cleaning</h3>
-                    <p class="price">$3.00 / ft</p>
-                    <ul>
-                        <li data-i18n="plan_premium_1">Robot cleaning with photos & video</li>
-                        <li data-i18n="plan_premium_2">Before & after media archive</li>
-                    </ul>
-                </div>
-            </div>
+    <section id="pricing">
+      <h2 data-en="Pricing" data-es="Precios">Pricing</h2>
+      <div class="pricing-grid">
+        <div class="plan">
+          <h3>Basic</h3>
+          <p data-en="Inspection + Photos" data-es="Inspección + Fotos">Inspection + Photos</p>
+          <p>$2.50/ft</p>
         </div>
+        <div class="plan recommended">
+          <h3>Standard</h3>
+          <p data-en="Cleaning + Service Record" data-es="Limpieza + Registro de Servicio">Cleaning + Service Record</p>
+          <p>$2.75/ft</p>
+        </div>
+        <div class="plan">
+          <h3>Premium</h3>
+          <p data-en="Cleaning + Photos & Video + Record" data-es="Limpieza + Fotos y Video + Registro">Cleaning + Photos & Video + Record</p>
+          <p>$3.00/ft</p>
+        </div>
+      </div>
     </section>
 
-    <section id="newsletter" class="section">
-        <div class="container">
-            <h2 data-i18n="newsletter_title">Subscribe for Offers & News</h2>
-            <p data-i18n="newsletter_desc">Enter your email to receive updates and promotions from RivMar.</p>
-            <form id="newsletter-form">
-                <input type="email" placeholder="Enter your email" required />
-                <button type="submit" data-i18n="subscribe">Subscribe</button>
-            </form>
-        </div>
+    <section class="gallery">
+      <h2 data-en="Our Work" data-es="Nuestro Trabajo">Our Work</h2>
+      <img src="assets/ChatGPT Image May 3, 2025, 11_37_27 AM.png" alt="Van Mockup" />
+      <img src="assets/fbcc6daa-17d7-43d3-a592-bc63832880f1.png" alt="Reference Image 1" />
+      <img src="assets/a85a71d3-3433-42bd-ac26-8720ead90e86.png" alt="Reference Image 2" />
     </section>
 
-    <section id="contact" class="section alt">
-        <div class="container">
-            <h2 data-i18n="contact">Contact Us</h2>
-            <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
-            <p>Phone: <a href="tel:+17863669294">+1 (786) 366-9294</a></p>
-        </div>
+    <section class="subscribe">
+      <h2 data-en="Stay Updated" data-es="Mantente Informado">Stay Updated</h2>
+      <form>
+        <input type="email" placeholder="Enter your email" required />
+        <button type="submit" data-en="Subscribe" data-es="Suscribirse">Subscribe</button>
+      </form>
     </section>
 
-    <footer>
-        <div class="container">
-            &copy; 2025 RivMar Group. All rights reserved.
-        </div>
-    </footer>
-    <script src="script.js"></script>
+    <section id="contact">
+      <h2 data-en="Contact" data-es="Contacto">Contact</h2>
+      <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
+      <p>Phone: <a href="tel:+17863669294">+1 (786) 366-9294</a></p>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 RivMar Group. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const enBtn = document.getElementById("enBtn");
+    const esBtn = document.getElementById("esBtn");
+
+    const elements = document.querySelectorAll("[data-en]");
+
+    enBtn.addEventListener("click", () => {
+      elements.forEach(el => el.textContent = el.getAttribute("data-en"));
+    });
+
+    esBtn.addEventListener("click", () => {
+      elements.forEach(el => el.textContent = el.getAttribute("data-es"));
+    });
+  </script>
 </body>
 </html>
