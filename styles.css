@@ -4,7 +4,7 @@ body {
   font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f3f3f3;
+  background-color: #f4f6f8;
   color: #222;
 }
 
@@ -14,17 +14,18 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5em 1em;
+  padding: 1em 2em;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
 .logo {
-  height: 50px;
+  height: 60px;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 1em;
+  gap: 1.5em;
   margin: 0;
   padding: 0;
 }
@@ -38,42 +39,68 @@ nav button {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 0.4em 0.6em;
+  padding: 0.5em 0.8em;
   cursor: pointer;
-  border-radius: 4px;
+  border-radius: 6px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+nav button:hover {
+  background-color: #005fa3;
 }
 
 .hero {
   background: linear-gradient(to right, #003b6f, #007bff);
   color: white;
   text-align: center;
-  padding: 3em 1em;
+  padding: 4em 1em;
+  background-image: url("images/hero-bg.png");
+  background-size: cover;
+  background-position: center;
+}
+
+.hero h1 {
+  font-size: 2.5em;
+  margin-bottom: 0.5em;
+}
+
+.hero p {
+  font-size: 1.2em;
+  max-width: 800px;
+  margin: 0 auto;
 }
 
 main {
-  padding: 2em;
-  max-width: 1100px;
+  padding: 3em 1.5em;
+  max-width: 1200px;
   margin: auto;
 }
 
 h2 {
-  font-size: 1.8em;
+  font-size: 2em;
   margin-top: 1.5em;
   color: #003b6f;
+  margin-bottom: 0.5em;
 }
 
 .service-grid, .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1em;
-  margin-top: 1em;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5em;
+  margin-top: 1.5em;
 }
 
 .service-box, .plan {
   background-color: white;
   border-radius: 10px;
-  padding: 1em;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  padding: 1.5em;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.service-box:hover, .plan:hover {
+  transform: translateY(-5px);
 }
 
 .recommended {
@@ -85,36 +112,49 @@ h2 {
   height: auto;
   margin: 1em 0;
   border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
 }
 
 .subscribe form {
   display: flex;
   gap: 1em;
-  margin-top: 1em;
+  margin-top: 1.5em;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .subscribe input[type=email] {
   flex: 1;
-  padding: 0.5em;
+  padding: 0.75em;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 6px;
+  font-size: 1em;
 }
 
 .subscribe button {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 0.5em 1em;
-  border-radius: 5px;
+  padding: 0.75em 1.2em;
+  border-radius: 6px;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 1em;
+  transition: background-color 0.3s ease;
+}
+
+.subscribe button:hover {
+  background-color: #005fa3;
 }
 
 footer {
-  background-color: #e3e3e3;
+  background-color: #002c50;
+  color: white;
   text-align: center;
-  padding: 1em;
+  padding: 1.5em;
   font-size: 0.9em;
-  margin-top: 3em;
+  margin-top: 4em;
 }
 
 a {
