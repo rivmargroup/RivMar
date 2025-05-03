@@ -1,114 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>RivMar Group</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        header {
-            background: #003366;
-            color: #fff;
-            padding: 20px 0;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 1200px;
-            margin: auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-
-        nav a {
-            color: #fff;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: bold;
-        }
-
-        .hero {
-            background: url('https://via.placeholder.com/1600x600') no-repeat center center/cover;
-            height: 60vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            position: relative;
-        }
-
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 40px;
-            text-align: center;
-        }
-
-        .section {
-            padding: 40px 20px;
-            background: white;
-            text-align: center;
-        }
-
-        .cards {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-
-        .card {
-            background: #e6f0ff;
-            padding: 20px;
-            border-radius: 8px;
-            width: 250px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        footer {
-            background: #003366;
-            color: white;
-            text-align: center;
-            padding: 20px 0;
-            margin-top: 40px;
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .cards {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            nav {
-                margin-top: 10px;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+    <!-- Encabezado -->
     <header>
         <div class="container">
             <div class="logo">RIVMAR</div>
@@ -120,6 +19,7 @@
         </div>
     </header>
 
+    <!-- Sección principal -->
     <section class="hero">
         <div class="overlay">
             <h1>Robotic Boat Hull Cleaning</h1>
@@ -127,6 +27,7 @@
         </div>
     </section>
 
+    <!-- Servicios -->
     <section id="services" class="section">
         <h2>Our Services</h2>
         <div class="cards">
@@ -145,30 +46,46 @@
         </div>
     </section>
 
+    <!-- Precios -->
     <section id="pricing" class="section">
         <h2>Pricing</h2>
         <div class="cards">
             <div class="card">
                 <h3>Basic</h3>
-                <p>Inspection only<br>$2.50/ft</p>
+                <p>Inspection only<br><strong>$2.50/ft</strong></p>
             </div>
             <div class="card">
                 <h3>Standard</h3>
-                <p>Cleaning + Inspection<br>$2.75/ft</p>
+                <p>Cleaning + Inspection<br><strong>$2.75/ft</strong></p>
             </div>
             <div class="card">
                 <h3>Premium</h3>
-                <p>Cleaning + Photos + Video<br>$3.00/ft</p>
+                <p>Cleaning + Photos + Video<br><strong>$3.00/ft</strong></p>
             </div>
         </div>
     </section>
 
+    <!-- Contacto -->
     <section id="contact" class="section">
         <h2>Contact Us</h2>
-        <p>Email: rivmargroup@gmail.com</p>
-        <p>Phone: (786) 366-9294</p>
+        <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
+        <p>Phone: <a href="tel:+17863669294">(786) 366-9294</a></p>
+
+        <form action="mailto:rivmargroup@gmail.com" method="POST" enctype="text/plain" style="margin-top: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">
+            <div style="margin-bottom: 10px;">
+                <input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 10px;" />
+            </div>
+            <div style="margin-bottom: 10px;">
+                <input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 10px;" />
+            </div>
+            <div style="margin-bottom: 10px;">
+                <textarea name="message" rows="5" placeholder="Your Message" required style="width: 100%; padding: 10px;"></textarea>
+            </div>
+            <button type="submit" style="padding: 10px 20px; background-color: #002e4d; color: white; border: none; cursor: pointer;">Send Message</button>
+        </form>
     </section>
 
+    <!-- Pie de página -->
     <footer>
         <p>&copy; 2025 RivMar Group. All rights reserved.</p>
     </footer>
