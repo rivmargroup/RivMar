@@ -4,9 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RivMar Group</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css" />
-  <script src="script.js" defer></script>
 </head>
 <body>
   <header class="hero-header">
@@ -14,20 +12,18 @@
     <nav class="top-nav">
       <img src="assets/logo.png" alt="RivMar Logo" class="logo" />
       <ul>
-        <li><a id="nav-services" href="#services">Services</a></li>
-        <li><a id="nav-pricing" href="#pricing">Pricing</a></li>
-        <li><a id="nav-contact" href="#contact">Contact</a></li>
-        <li><button onclick="changeLanguage('en')">EN</button></li>
-        <li><button onclick="changeLanguage('es')">ES</button></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
     <div class="hero-text">
-      <h1 id="hero-title">Robotic Boat Hull Cleaning</h1>
-      <p id="hero-subtitle">Advanced technology for pristine results – before and after visuals included.</p>
+      <h1>Robotic Boat Hull Cleaning</h1>
+      <p>Advanced technology for pristine results – before and after visuals included.</p>
     </div>
   </header>
 
-  <main>
+  <main class="container">
     <section id="services">
       <h2>Services</h2>
       <div class="service-grid">
@@ -37,11 +33,11 @@
         </div>
         <div class="service-box">
           <img src="assets/cleaning-icon.png" alt="Cleaning Icon" />
-          <p><strong>Hull cleaning with underwater robot</strong></p>
+          <p><strong>Hull cleaning with robot</strong></p>
         </div>
         <div class="service-box">
           <img src="assets/video-icon.png" alt="Video Icon" />
-          <p><strong>Hull cleaning with photos and video</strong></p>
+          <p><strong>Cleaning report + video</strong></p>
         </div>
       </div>
     </section>
@@ -52,26 +48,25 @@
         <div class="plan">
           <h3>Basic</h3>
           <p>Inspection + Photos</p>
-          <p><strong>$2.50/ft</strong></p>
+          <strong>$2.50/ft</strong>
         </div>
-        <div class="plan recommended">
+        <div class="plan">
           <h3>Standard</h3>
-          <p>Cleaning + Service Record</p>
-          <p><strong>$2.75/ft</strong></p>
+          <p>Cleaning + Record</p>
+          <strong>$2.75/ft</strong>
         </div>
         <div class="plan">
           <h3>Premium</h3>
-          <p>Cleaning + Photos & Video + Record</p>
-          <p><strong>$3.00/ft</strong></p>
+          <p>Cleaning + Video</p>
+          <strong>$3.00/ft</strong>
         </div>
       </div>
     </section>
 
-    <section class="robot-highlight">
-      <img src="assets/robot.png" alt="Cleaning Robot" />
-      <div class="robot-text">
+    <section class="robot-info">
+      <img src="assets/robot.png" alt="Robot Image" />
+      <div>
         <h3>Efficiency and Precision</h3>
-        <p>Our underwater robot uses cutting-edge technology to clean your boat hull efficiently and safely. Enjoy full visual reports with photos and videos before and after each cleaning session.</p>
         <ul>
           <li>Consistent cleaning quality</li>
           <li>Minimized diver risks</li>
@@ -81,20 +76,20 @@
       </div>
     </section>
 
-    <img src="assets/van.png" alt="Van" class="van-image" />
+    <img src="assets/van.png" alt="Van Image" class="van-image" />
 
     <section class="subscribe">
-      <h2 id="stay-updated">Stay Updated</h2>
+      <h2>Stay Updated</h2>
       <form>
-        <input type="email" placeholder="Enter your email" required />
-        <button type="submit">Subscribe</button>
+        <input type="email" placeholder="Enter your email" />
+        <button>Subscribe</button>
       </form>
     </section>
 
     <section id="contact">
-      <h2 id="contact-title">Contact</h2>
-      <p><strong id="email-label">Email:</strong> <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
-      <p><strong id="phone-label">Phone:</strong> <a href="tel:+17863669294">+1 (786) 366-9294</a></p>
+      <h2>Contact</h2>
+      <p><strong>Email:</strong> rivmargroup@gmail.com</p>
+      <p><strong>Phone:</strong> +1 (786) 366-9294</p>
     </section>
   </main>
 
