@@ -97,6 +97,12 @@ h2 {
   padding: 1.5em;
   box-shadow: 0 5px 20px rgba(0,0,0,0.05);
   transition: transform 0.3s ease;
+  text-align: center;
+}
+
+.service-box img {
+  width: 60px;
+  margin-bottom: 1em;
 }
 
 .service-box:hover, .plan:hover {
@@ -107,12 +113,27 @@ h2 {
   border: 2px solid #007bff;
 }
 
+.gallery {
+  display: flex;
+  align-items: center;
+  gap: 2em;
+  flex-wrap: wrap;
+  margin-top: 3em;
+}
+
 .gallery img {
   max-width: 100%;
   height: auto;
-  margin: 1em 0;
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  flex: 1;
+}
+
+.gallery-description {
+  flex: 1;
+  min-width: 300px;
+  font-size: 1.1em;
+  line-height: 1.6;
 }
 
 .subscribe form {
