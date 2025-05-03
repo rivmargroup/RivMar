@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>RivMar Group</title>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="stylesheet" href="styles.css" />
   <script>
     const translations = {
@@ -43,6 +44,11 @@
       document.getElementById("email-label").textContent = t.email;
       document.getElementById("phone-label").textContent = t.phone;
     }
+
+    function toggleMenu() {
+      const nav = document.querySelector(".top-nav ul");
+      nav.classList.toggle("active");
+    }
   </script>
 </head>
 <body>
@@ -50,6 +56,7 @@
     <img src="assets/banner.png" alt="Banner Image" class="banner-image" />
     <nav class="top-nav">
       <img src="assets/logo.png" alt="RivMar Logo" class="logo" />
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
       <ul>
         <li><a id="nav-services" href="#services">Services</a></li>
         <li><a id="nav-pricing" href="#pricing">Pricing</a></li>
