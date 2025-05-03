@@ -27,8 +27,10 @@ const translations = {
 function setLanguage(lang) {
     document.querySelectorAll("[data-i18n]").forEach(el => {
         const key = el.getAttribute("data-i18n");
-        el.textContent = translations[lang][key];
+        if (translations[lang][key]) {
+            el.textContent = translations[lang][key];
+        }
     });
 }
 
-setLanguage('en');
+document.addEventListener("DOMContentLoaded", () => setLanguage("en"));
