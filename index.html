@@ -8,83 +8,87 @@
 </head>
 <body>
   <header>
-    <img src="assets/ChatGPT Image May 3, 2025, 10_56_04 AM.png" alt="RivMar Logo" class="logo" />
+    <img src="images/logo.png" alt="RivMar Logo" class="logo" />
     <nav>
       <ul>
         <li><a href="#services">Services</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><button id="enBtn">EN</button></li>
-        <li><button id="esBtn">ES</button></li>
+        <li><button onclick="setLanguage('en')">EN</button></li>
+        <li><button onclick="setLanguage('es')">ES</button></li>
       </ul>
     </nav>
   </header>
 
+  <section class="hero">
+    <h1>Robotic Boat Hull Cleaning</h1>
+    <p>Advanced technology for pristine results – before and after visuals included.</p>
+  </section>
+
   <main>
-    <section class="hero">
-      <h1 data-en="Robotic Boat Hull Cleaning" data-es="Limpieza Robótica de Casco de Bote">Robotic Boat Hull Cleaning</h1>
-      <p data-en="Advanced technology for pristine results – before and after visuals included."
-         data-es="Tecnología avanzada para resultados impecables, con imágenes del antes y después.">
-         Advanced technology for pristine results – before and after visuals included.
-      </p>
-    </section>
-
-    <section id="services">
-      <h2 data-en="Services" data-es="Servicios">Services</h2>
-      <div class="service-grid">
-        <div class="service-box" data-en="Hull inspection with photos" data-es="Inspección del casco con fotos">
-          Hull inspection with photos
-        </div>
-        <div class="service-box" data-en="Hull cleaning with underwater robot" data-es="Limpieza de casco con robot">
-          Hull cleaning with underwater robot
-        </div>
-        <div class="service-box" data-en="Hull cleaning with photos and video" data-es="Limpieza de casco con fotos y video">
-          Hull cleaning with photos and video
-        </div>
+    <h2 id="services">Services</h2>
+    <div class="service-grid">
+      <div class="service-box">
+        <img src="images/icon-inspection.png" alt="Inspection Icon">
+        <h3>Hull inspection with photos</h3>
       </div>
-    </section>
-
-    <section id="pricing">
-      <h2 data-en="Pricing" data-es="Precios">Pricing</h2>
-      <div class="pricing-grid">
-        <div class="plan">
-          <h3>Basic</h3>
-          <p data-en="Inspection + Photos" data-es="Inspección + Fotos">Inspection + Photos</p>
-          <p>$2.50/ft</p>
-        </div>
-        <div class="plan recommended">
-          <h3>Standard</h3>
-          <p data-en="Cleaning + Service Record" data-es="Limpieza + Registro de Servicio">Cleaning + Service Record</p>
-          <p>$2.75/ft</p>
-        </div>
-        <div class="plan">
-          <h3>Premium</h3>
-          <p data-en="Cleaning + Photos & Video + Record" data-es="Limpieza + Fotos y Video + Registro">Cleaning + Photos & Video + Record</p>
-          <p>$3.00/ft</p>
-        </div>
+      <div class="service-box">
+        <img src="images/icon-cleaning.png" alt="Cleaning Icon">
+        <h3>Hull cleaning with underwater robot</h3>
       </div>
-    </section>
+      <div class="service-box">
+        <img src="images/icon-video.png" alt="Video Icon">
+        <h3>Hull cleaning with photos and video</h3>
+      </div>
+    </div>
 
-    <section class="gallery">
-      <h2 data-en="Our Work" data-es="Nuestro Trabajo">Our Work</h2>
-      <img src="assets/ChatGPT Image May 3, 2025, 11_37_27 AM.png" alt="Van Mockup" />
-      <img src="assets/fbcc6daa-17d7-43d3-a592-bc63832880f1.png" alt="Reference Image 1" />
-      <img src="assets/a85a71d3-3433-42bd-ac26-8720ead90e86.png" alt="Reference Image 2" />
-    </section>
+    <h2 id="pricing">Pricing</h2>
+    <div class="pricing-grid">
+      <div class="plan">
+        <h3>Basic</h3>
+        <p>Inspection + Photos</p>
+        <strong>$2.50/ft</strong>
+      </div>
+      <div class="plan recommended">
+        <h3>Standard</h3>
+        <p>Cleaning + Service Record</p>
+        <strong>$2.75/ft</strong>
+      </div>
+      <div class="plan">
+        <h3>Premium</h3>
+        <p>Cleaning + Photos & Video + Record</p>
+        <strong>$3.00/ft</strong>
+      </div>
+    </div>
 
-    <section class="subscribe">
-      <h2 data-en="Stay Updated" data-es="Mantente Informado">Stay Updated</h2>
+    <h2>Why Choose RivMar</h2>
+    <div class="gallery">
+      <img src="images/robot1.png" alt="Cleaning Robot" />
+      <div class="gallery-description">
+        <h3>Efficiency and Precision</h3>
+        <p>
+          Our underwater robot uses cutting-edge technology to clean your boat hull efficiently and safely. Enjoy full visual reports with photos and videos before and after each cleaning session.
+        </p>
+        <ul>
+          <li>Consistent cleaning quality</li>
+          <li>Minimized diver risks</li>
+          <li>Eco-friendly and non-invasive</li>
+          <li>Trackable maintenance history</li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="subscribe">Stay Updated</h2>
+    <div class="subscribe">
       <form>
         <input type="email" placeholder="Enter your email" required />
-        <button type="submit" data-en="Subscribe" data-es="Suscribirse">Subscribe</button>
+        <button type="submit">Subscribe</button>
       </form>
-    </section>
+    </div>
 
-    <section id="contact">
-      <h2 data-en="Contact" data-es="Contacto">Contact</h2>
-      <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
-      <p>Phone: <a href="tel:+17863669294">+1 (786) 366-9294</a></p>
-    </section>
+    <h2 id="contact">Contact</h2>
+    <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
+    <p>Phone: <a href="tel:+17863669294">+1 (786) 366-9294</a></p>
   </main>
 
   <footer>
@@ -92,18 +96,10 @@
   </footer>
 
   <script>
-    const enBtn = document.getElementById("enBtn");
-    const esBtn = document.getElementById("esBtn");
-
-    const elements = document.querySelectorAll("[data-en]");
-
-    enBtn.addEventListener("click", () => {
-      elements.forEach(el => el.textContent = el.getAttribute("data-en"));
-    });
-
-    esBtn.addEventListener("click", () => {
-      elements.forEach(el => el.textContent = el.getAttribute("data-es"));
-    });
+    function setLanguage(lang) {
+      // Placeholder: You can expand this later to support translation logic.
+      alert(`Language changed to: ${lang}`);
+    }
   </script>
 </body>
 </html>
