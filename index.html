@@ -213,93 +213,7 @@
 </div>
 
 
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
 
-const firebaseConfig = {
-  apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
-  authDomain: "rivmar-clientes.firebaseapp.com",
-  projectId: "rivmar-clientes",
-  storageBucket: "rivmar-clientes.appspot.com",
-  messagingSenderId: "631400927733",
-  appId: "1:631400927733:web:aab935d3fafb07e07490bc"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-const loginPanel = document.getElementById("login-panel");
-const userInfo = document.getElementById("user-info");
-
-
-window.toggleLogin = () => {
-  const loginPanel = document.getElementById("login-panel");
-  const profileMenu = document.getElementById("profile-menu");
-  if (profileMenu) profileMenu.style.display = "none";
-  loginPanel.style.display = loginPanel.style.display === "block" ? "none" : "block";
-};
-
-document.getElementById("login-btn").addEventListener("click", () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => {
-      document.getElementById("login-panel").style.display = "none";
-    })
-    .catch(err => alert("Login error: " + err.message));
-});
-
-document.getElementById("signup-btn").addEventListener("click", () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(() => alert("Account created. Please login."))
-    .catch(err => alert("Signup error: " + err.message));
-});
-
-document.getElementById("forgot-btn").addEventListener("click", () => {
-  const email = document.getElementById("email").value;
-  if (!email) return alert("Enter your email first");
-  sendPasswordResetEmail(auth, email)
-    .then(() => alert("Password reset email sent."))
-    .catch(err => alert("Error: " + err.message));
-});
-
-  loginPanel.style.display = loginPanel.style.display === "block" ? "none" : "block";
-};
-
-document.getElementById("login-btn").addEventListener("click", () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  signInWithEmailAndPassword(auth, email, password).catch(err => alert("Login error: " + err.message));
-});
-
-document.getElementById("signup-btn").addEventListener("click", () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  createUserWithEmailAndPassword(auth, email, password).then(() => alert("Account created")).catch(err => alert("Signup error: " + err.message));
-});
-
-document.getElementById("logout-btn").addEventListener("click", () => {
-  signOut(auth).then(() => {
-    userInfo.style.display = "none";
-    loginPanel.style.display = "none";
-    document.getElementById("login-nav").style.display = "inline";
-    document.getElementById("profile-nav").style.display = "none";
-  });
-});
-
-onAuthStateChanged(auth, user => {
-  if (user) {
-    document.getElementById("user-email").textContent = "Welcome: " + user.email;
-    loginPanel.style.display = "none";
-    userInfo.style.display = "block";
-    document.getElementById("login-nav").style.display = "none";
-    document.getElementById("profile-nav").style.display = "inline";
-  }
-});
-</script>
 
 
 <script>
@@ -318,6 +232,97 @@ function logoutUser() {
     });
   });
 }
+</script>
+
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  sendPasswordResetEmail,
+  signOut,
+  onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
+  authDomain: "rivmar-clientes.firebaseapp.com",
+  projectId: "rivmar-clientes",
+  storageBucket: "rivmar-clientes.appspot.com",
+  messagingSenderId: "631400927733",
+  appId: "1:631400927733:web:aab935d3fafb07e07490bc"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+window.toggleLogin = () => {
+  const loginPanel = document.getElementById("login-panel");
+  const profileMenu = document.getElementById("profile-menu");
+  if (profileMenu) profileMenu.style.display = "none";
+  loginPanel.style.display = loginPanel.style.display === "block" ? "none" : "block";
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const loginBtn = document.getElementById("login-btn");
+  const signupBtn = document.getElementById("signup-btn");
+  const forgotBtn = document.getElementById("forgot-btn");
+
+  if (loginBtn) {
+    loginBtn.addEventListener("click", () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          document.getElementById("login-panel").style.display = "none";
+        })
+        .catch(err => alert("Login error: " + err.message));
+    });
+  }
+
+  if (signupBtn) {
+    signupBtn.addEventListener("click", () => {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      createUserWithEmailAndPassword(auth, email, password)
+        .then(() => alert("Account created. Please login."))
+        .catch(err => alert("Signup error: " + err.message));
+    });
+  }
+
+  if (forgotBtn) {
+    forgotBtn.addEventListener("click", () => {
+      const email = document.getElementById("email").value;
+      if (!email) return alert("Enter your email first");
+      sendPasswordResetEmail(auth, email)
+        .then(() => alert("Password reset email sent."))
+        .catch(err => alert("Error: " + err.message));
+    });
+  }
+});
+
+onAuthStateChanged(auth, user => {
+  if (user) {
+    document.getElementById("login-nav").style.display = "none";
+    document.getElementById("profile-nav").style.display = "inline";
+  }
+});
+
+window.logoutUser = () => {
+  signOut(auth).then(() => {
+    document.getElementById("login-nav").style.display = "inline";
+    document.getElementById("profile-nav").style.display = "none";
+    const menu = document.getElementById('profile-menu');
+    if (menu) menu.style.display = "none";
+  });
+};
+
+window.toggleProfileDropdown = () => {
+  const menu = document.getElementById('profile-menu');
+  menu.style.display = menu.style.display === "block" ? "none" : "block";
+};
 </script>
 
 </body>
