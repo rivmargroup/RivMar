@@ -3,92 +3,167 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>RivMar - Acceso de Clientes</title>
+  <title>RivMar - Inicio</title>
   <style>
-    body { font-family: Arial, sans-serif; background: #f0f2f5; padding: 40px; text-align: center; }
-    input, button { margin: 10px; padding: 10px; width: 250px; font-size: 16px; }
-    a { color: #0074D9; font-weight: bold; }
-    #user-content { background: #fff; padding: 20px; margin-top: 30px; border-radius: 10px; display: inline-block; }
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 20px;
+    }
+
+    .btn-login {
+      background: white;
+      color: #003366;
+      border: none;
+      padding: 10px 20px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 4px;
+    }
+
+    .auth-popup {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 20px;
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      z-index: 100;
+    }
+
+    .auth-popup input, .auth-popup button {
+      display: block;
+      margin: 10px auto;
+      padding: 10px;
+      width: 90%;
+    }
+
+    .section {
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    #user-content {
+      display: none;
+      text-align: center;
+      margin-top: 40px;
+    }
+
+    a {
+      color: #0074D9;
+    }
   </style>
 </head>
 <body>
 
-  <div id="login-container">
-    <h2>Accede a tu cuenta RivMar</h2>
-    <input type="email" id="email" placeholder="Correo electrónico" /><br>
-    <input type="password" id="password" placeholder="Contraseña" /><br>
-    <button onclick="login()">Iniciar sesión</button>
-    <button onclick="register()">Registrarse</button>
-  </div>
+<header>
+  <h1>RivMar Servicios Marinos</h1>
+  <button class="btn-login" onclick="toggleAuth()">Login</button>
+</header>
 
-  <div id="user-content" style="display:none;">
-    <h2>Bienvenido</h2>
-    <p id="drive-link">Cargando enlace de limpieza...</p>
-    <br>
-    <button onclick="logout()">Cerrar sesión</button>
-  </div>
+<div class="auth-popup" id="auth-popup">
+  <input type="email" id="email" placeholder="Correo electrónico" />
+  <input type="password" id="password" placeholder="Contraseña" />
+  <button onclick="login()">Iniciar sesión</button>
+  <button onclick="register()">Registrarse</button>
+</div>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js"></script>
+<div class="section">
+  <h2>Bienvenido a RivMar</h2>
+  <p>Ofrecemos limpieza profesional de cascos de botes con tecnología avanzada.</p>
+</div>
 
-  <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyALCBhybMXTS_SPzC013YEkWBwvPv-_QZY",
-      authDomain: "rivmar-clientes.firebaseapp.com",
-      projectId: "rivmar-clientes",
-      storageBucket: "rivmar-clientes.appspot.com",
-      messagingSenderId: "631400927733",
-      appId: "1:631400927733:web:aab935d3fafb07e07490bc",
-      measurementId: "G-3FNQ0BHT31"
-    };
+<div id="user-content">
+  <h2>Bienvenido</h2>
+  <p id="drive-link">Cargando enlace de limpieza...</p>
+  <br>
+  <button onclick="logout()">Cerrar sesión</button>
+</div>
 
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
-    const db = firebase.firestore();
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js"></script>
 
-    function login() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      auth.signInWithEmailAndPassword(email, password)
-        .then((userCredential) => loadUserData(userCredential.user))
-        .catch((error) => alert(error.message));
-    }
+<script>
+  const firebaseConfig = {
+    apiKey: "AIzaSyALCBhybMXTS_SPzC013YEkWBwvPv-_QZY",
+    authDomain: "rivmar-clientes.firebaseapp.com",
+    projectId: "rivmar-clientes",
+    storageBucket: "rivmar-clientes.appspot.com",
+    messagingSenderId: "631400927733",
+    appId: "1:631400927733:web:aab935d3fafb07e07490bc",
+    measurementId: "G-3FNQ0BHT31"
+  };
 
-    function register() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      auth.createUserWithEmailAndPassword(email, password)
-        .then((userCredential) => {
-          db.collection("users").doc(userCredential.user.uid).set({
-            email: email,
-            driveLink: ""
-          });
-          loadUserData(userCredential.user);
-        })
-        .catch((error) => alert(error.message));
-    }
+  firebase.initializeApp(firebaseConfig);
+  const auth = firebase.auth();
+  const db = firebase.firestore();
 
-    function logout() {
-      auth.signOut().then(() => {
-        document.getElementById("user-content").style.display = "none";
-        document.getElementById("login-container").style.display = "block";
-      });
-    }
+  function toggleAuth() {
+    const popup = document.getElementById("auth-popup");
+    popup.style.display = popup.style.display === "block" ? "none" : "block";
+  }
 
-    function loadUserData(user) {
-      db.collection("users").doc(user.uid).get().then(doc => {
-        const link = doc.data().driveLink || "Aún no se ha subido el video.";
-        document.getElementById("drive-link").innerHTML = `<a href="${link}" target="_blank">Ver limpieza</a>`;
-        document.getElementById("login-container").style.display = "none";
-        document.getElementById("user-content").style.display = "block";
-      });
-    }
+  function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    auth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => loadUserData(userCredential.user))
+      .catch((error) => alert(error.message));
+  }
 
-    auth.onAuthStateChanged(user => {
-      if (user) loadUserData(user);
+  function register() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        db.collection("users").doc(userCredential.user.uid).set({
+          email: email,
+          driveLink: ""
+        });
+        loadUserData(userCredential.user);
+      })
+      .catch((error) => alert(error.message));
+  }
+
+  function logout() {
+    auth.signOut().then(() => {
+      document.getElementById("user-content").style.display = "none";
+      document.getElementById("auth-popup").style.display = "none";
     });
-  </script>
+  }
+
+  function loadUserData(user) {
+    db.collection("users").doc(user.uid).get().then(doc => {
+      const link = doc.data().driveLink || "Aún no se ha subido el video.";
+      document.getElementById("drive-link").innerHTML = `<a href="${link}" target="_blank">Ver limpieza</a>`;
+      document.getElementById("auth-popup").style.display = "none";
+      document.getElementById("user-content").style.display = "block";
+    });
+  }
+
+  auth.onAuthStateChanged(user => {
+    if (user) loadUserData(user);
+  });
+</script>
+
 </body>
 </html>
