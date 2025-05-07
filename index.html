@@ -206,6 +206,7 @@
   <input type="password" id="password" placeholder="Password" style="width:100%; padding:10px; margin-bottom:10px;">
   <button id="login-btn" style="width:100%; padding:10px; margin-bottom:10px;">Login</button>
   <button id="signup-btn" style="width:100%; padding:10px;">Sign up</button>
+<button id="forgot-btn" style="width:100%; padding:10px; margin-top:10px;">Forgot password</button>
 </div>
 <!-- Removed user-info panel -->
   
@@ -214,7 +215,7 @@
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
 
 const firebaseConfig = {
   apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
@@ -231,7 +232,40 @@ const auth = getAuth(app);
 const loginPanel = document.getElementById("login-panel");
 const userInfo = document.getElementById("user-info");
 
+
 window.toggleLogin = () => {
+  const loginPanel = document.getElementById("login-panel");
+  const profileMenu = document.getElementById("profile-menu");
+  if (profileMenu) profileMenu.style.display = "none";
+  loginPanel.style.display = loginPanel.style.display === "block" ? "none" : "block";
+};
+
+document.getElementById("login-btn").addEventListener("click", () => {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  signInWithEmailAndPassword(auth, email, password)
+    .then(() => {
+      document.getElementById("login-panel").style.display = "none";
+    })
+    .catch(err => alert("Login error: " + err.message));
+});
+
+document.getElementById("signup-btn").addEventListener("click", () => {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  createUserWithEmailAndPassword(auth, email, password)
+    .then(() => alert("Account created. Please login."))
+    .catch(err => alert("Signup error: " + err.message));
+});
+
+document.getElementById("forgot-btn").addEventListener("click", () => {
+  const email = document.getElementById("email").value;
+  if (!email) return alert("Enter your email first");
+  sendPasswordResetEmail(auth, email)
+    .then(() => alert("Password reset email sent."))
+    .catch(err => alert("Error: " + err.message));
+});
+
   loginPanel.style.display = loginPanel.style.display === "block" ? "none" : "block";
 };
 
