@@ -1,76 +1,153 @@
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>RivMar - Servicios Marinos</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RivMar Group</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    body { font-family: Arial, sans-serif; background: #f0f2f5; margin: 0; padding: 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background-color: #f4fdff; color: #111; line-height: 1.6; }
     header {
-      background-color: #003366; color: white;
-      padding: 15px 30px; display: flex; justify-content: space-between; align-items: center;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 40px; background-color: #002f4b; position: relative;
     }
-    header h1 { margin: 0; font-size: 20px; }
-    .btn-login {
-      background: white; color: #003366; border: none; padding: 10px 20px;
-      font-weight: bold; cursor: pointer; border-radius: 4px;
-    }
+    .logo { height: 50px; }
+    nav ul { list-style: none; display: flex; gap: 20px; }
+    nav ul li a { color: #fff; text-decoration: none; font-weight: 600; }
+
     .auth-popup {
-      display: none; position: absolute; top: 60px; right: 20px;
+      display: none; position: absolute; top: 80px; right: 40px;
       background: white; padding: 20px; border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 100;
     }
     .auth-popup input, .auth-popup button {
       display: block; margin: 10px auto; padding: 10px; width: 90%;
     }
-    .section {
-      text-align: center; padding: 100px 20px;
+
+    .hero { position: relative; }
+    .hero-img { width: 100%; height: 400px; object-fit: cover; }
+    .hero-text {
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%); color: white; text-align: center;
+      background: rgba(0, 0, 0, 0.4); padding: 20px 30px; border-radius: 12px;
     }
+    h1, h2 { font-weight: 700; margin-bottom: 20px; }
+    section { padding: 60px 20px; max-width: 1200px; margin: auto; }
+
+    .card-container {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;
+    }
+    .card {
+      background: #fff; border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      padding: 30px; text-align: center; width: 280px;
+    }
+    .card img { width: 60px; height: auto; margin-bottom: 15px; }
+
+    .fleet-images {
+      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px;
+    }
+    .fleet-images img {
+      width: 300px; border-radius: 10px; object-fit: cover;
+    }
+
+    footer { text-align: center; padding: 30px; background-color: #002f4b; color: white; }
+
+    #contact a { color: #004c9a; text-decoration: none; }
+
+    .btn-login {
+      background: white; color: #003366; border: none;
+      padding: 10px 20px; font-weight: bold;
+      cursor: pointer; border-radius: 4px;
+    }
+
     #user-content {
       display: none; max-width: 500px; margin: 40px auto;
       background: white; padding: 30px; border-radius: 10px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
-    #user-content h2 { margin-top: 0; }
-    input[type="file"] { margin-top: 10px; }
-    a { color: #0074D9; font-weight: bold; }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>RivMar Servicios Marinos</h1>
+  <img src="assets/logo.png" alt="RivMar Logo" class="logo" />
+  <nav>
+    <ul>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
   <button class="btn-login" onclick="toggleAuth()">Login</button>
 </header>
 
 <div class="auth-popup" id="auth-popup">
-  <input type="email" id="email" placeholder="Correo electrónico" />
-  <input type="password" id="password" placeholder="Contraseña" />
-  <button onclick="login()">Iniciar sesión</button>
-  <button onclick="register()">Registrarse</button>
-</div>
-
-<div class="section">
-  <h2>Bienvenido a RivMar</h2>
-  <p>Ofrecemos limpieza profesional de cascos de botes con tecnología avanzada.</p>
+  <input type="email" id="email" placeholder="Email" />
+  <input type="password" id="password" placeholder="Password" />
+  <button onclick="login()">Login</button>
+  <button onclick="register()">Sign up</button>
 </div>
 
 <div id="user-content">
-  <h2>Mi Perfil</h2>
+  <h2>My Profile</h2>
   <form onsubmit="saveProfile(event)">
-    <input type="text" id="nombre" placeholder="Nombre" required><br>
-    <input type="text" id="apellido" placeholder="Apellido"><br>
-    <input type="tel" id="telefono" placeholder="Teléfono de contacto"><br>
-    <input type="email" id="emailProfile" placeholder="Correo electrónico" disabled><br>
-    <label>Foto de perfil (opcional):</label>
-    <input type="file" id="fotoPerfil"><br><br>
-    <button type="submit">Guardar Perfil</button>
+    <input type="text" id="nombre" placeholder="First Name" required><br>
+    <input type="text" id="apellido" placeholder="Last Name"><br>
+    <input type="tel" id="telefono" placeholder="Phone"><br>
+    <input type="email" id="emailProfile" placeholder="Email" disabled><br>
+    <button type="submit">Save Profile</button>
   </form>
   <br>
-  <p id="drive-link">Tu enlace de limpieza aparecerá aquí.</p>
+  <p id="drive-link">Your cleaning link will appear here.</p>
   <br>
-  <button onclick="logout()">Cerrar sesión</button>
+  <button onclick="logout()">Logout</button>
 </div>
+
+<section class="hero">
+  <img src="assets/banner.png" alt="Hero Image" class="hero-img" />
+  <div class="hero-text">
+    <h1>Next-Gen Robotic Boat Hull Cleaning</h1>
+    <p>Efficient. Safe. Documented. Serving Miami, FL.</p>
+  </div>
+</section>
+
+<section id="services">
+  <h2>Our Services</h2>
+  <div class="card-container">
+    <div class="card"><img src="assets/inspection-icon.png" alt="Inspection"><h3>Inspection</h3><p>Hull Inspection with Photos</p></div>
+    <div class="card"><img src="assets/cleaning-icon.png" alt="Cleaning"><h3>Robotic Hull Cleaning</h3><p>Efficient and safe underwater cleaning</p></div>
+    <div class="card"><img src="assets/video-icon.png" alt="Video"><h3>Video Reports</h3><p>Before/After HD Video Documentation</p></div>
+  </div>
+</section>
+
+<section id="pricing">
+  <h2>Pricing</h2>
+  <div class="card-container">
+    <div class="card"><h3>Basic</h3><p>Inspection + Photos</p><strong>$2.50/ft</strong></div>
+    <div class="card"><h3>Standard</h3><p>Cleaning + Status Record</p><strong>$2.75/ft</strong></div>
+    <div class="card"><h3>Premium</h3><p>Cleaning + Photos + Video</p><strong>$3.00/ft</strong></div>
+  </div>
+</section>
+
+<section id="fleet">
+  <h2>Our Fleet</h2>
+  <div class="fleet-images">
+    <img src="assets/robot.png" alt="Robot" />
+    <img src="assets/van.png" alt="RivMar Van" />
+  </div>
+</section>
+
+<section id="contact">
+  <h2>Contact Us</h2>
+  <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
+  <p>Phone: <a href="tel:+17863669294">(786) 366-9294</a></p>
+</section>
+
+<footer><p>© 2025 RivMar Group. All rights reserved.</p></footer>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
@@ -83,8 +160,7 @@
     projectId: "rivmar-clientes",
     storageBucket: "rivmar-clientes.appspot.com",
     messagingSenderId: "631400927733",
-    appId: "1:631400927733:web:aab935d3fafb07e07490bc",
-    measurementId: "G-3FNQ0BHT31"
+    appId: "1:631400927733:web:aab935d3fafb07e07490bc"
   };
 
   firebase.initializeApp(firebaseConfig);
@@ -110,11 +186,7 @@
     auth.createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
         db.collection("users").doc(userCredential.user.uid).set({
-          email: email,
-          driveLink: "",
-          nombre: "",
-          apellido: "",
-          telefono: ""
+          email: email, driveLink: "", nombre: "", apellido: "", telefono: ""
         });
         loadUserData(userCredential.user);
       })
@@ -135,8 +207,7 @@
       document.getElementById("telefono").value = data.telefono || "";
       document.getElementById("emailProfile").value = data.email || "";
       document.getElementById("drive-link").innerHTML = data.driveLink
-        ? `<a href="${data.driveLink}" target="_blank">Ver limpieza</a>`
-        : "Aún no se ha subido el video.";
+        ? `<a href="${data.driveLink}" target="_blank">View cleaning</a>` : "No cleaning link uploaded yet.";
       document.getElementById("auth-popup").style.display = "none";
       document.getElementById("user-content").style.display = "block";
     });
@@ -146,19 +217,17 @@
     e.preventDefault();
     const user = auth.currentUser;
     if (!user) return;
-
     const ref = db.collection("users").doc(user.uid);
     ref.update({
       nombre: document.getElementById("nombre").value,
       apellido: document.getElementById("apellido").value,
       telefono: document.getElementById("telefono").value
-    }).then(() => alert("Perfil actualizado"));
+    }).then(() => alert("Profile updated"));
   }
 
   auth.onAuthStateChanged(user => {
     if (user) loadUserData(user);
   });
 </script>
-
 </body>
 </html>
