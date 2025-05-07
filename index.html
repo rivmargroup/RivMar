@@ -4,88 +4,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>RivMar Group</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <title>RivMar Login</title>
   <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: 'Inter', sans-serif; background-color: #f4fdff; color: #111; line-height: 1.6; }
-    header {
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 20px 40px; background-color: #002f4b; position: relative;
+    body { font-family: Arial, sans-serif; background-color: #f0f2f5; padding: 50px; text-align: center; }
+    .auth-box {
+      background: white; border-radius: 10px; padding: 30px; display: inline-block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1); width: 300px;
     }
-    .logo { height: 50px; }
-    nav ul { list-style: none; display: flex; gap: 20px; }
-    nav ul li a { color: #fff; text-decoration: none; font-weight: 600; }
-
-    .auth-popup {
-      display: none; position: absolute; top: 80px; right: 40px;
-      background: white; padding: 20px; border-radius: 8px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1); z-index: 100;
+    input, button {
+      width: 90%; padding: 10px; margin: 10px 0; font-size: 16px;
     }
-    .auth-popup input, .auth-popup button {
-      display: block; margin: 10px auto; padding: 10px; width: 90%;
-    }
-
-    .hero { position: relative; }
-    .hero-img { width: 100%; height: 400px; object-fit: cover; }
-    .hero-text {
-      position: absolute; top: 50%; left: 50%;
-      transform: translate(-50%, -50%); color: white; text-align: center;
-      background: rgba(0, 0, 0, 0.4); padding: 20px 30px; border-radius: 12px;
-    }
-    h1, h2 { font-weight: 700; margin-bottom: 20px; }
-    section { padding: 60px 20px; max-width: 1200px; margin: auto; }
-
-    .card-container {
-      display: flex; flex-wrap: wrap; justify-content: center; gap: 30px;
-    }
-    .card {
-      background: #fff; border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      padding: 30px; text-align: center; width: 280px;
-    }
-    .card img { width: 60px; height: auto; margin-bottom: 15px; }
-
-    .fleet-images {
-      display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px;
-    }
-    .fleet-images img {
-      width: 300px; border-radius: 10px; object-fit: cover;
-    }
-
-    footer { text-align: center; padding: 30px; background-color: #002f4b; color: white; }
-
-    #contact a { color: #004c9a; text-decoration: none; }
-
-    .btn-login {
-      background: white; color: #003366; border: none;
-      padding: 10px 20px; font-weight: bold;
-      cursor: pointer; border-radius: 4px;
-    }
-
     #user-content {
-      display: none; max-width: 500px; margin: 40px auto;
-      background: white; padding: 30px; border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-top: 40px; display: none;
     }
   </style>
 </head>
 <body>
 
-<header>
-  <img src="assets/logo.png" alt="RivMar Logo" class="logo" />
-  <nav>
-    <ul>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#pricing">Pricing</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-  <button class="btn-login" onclick="toggleAuth()">Login</button>
-</header>
-
-<div class="auth-popup" id="auth-popup">
+<h2>Welcome to RivMar</h2>
+<div class="auth-box">
   <input type="email" id="email" placeholder="Email" />
   <input type="password" id="password" placeholder="Password" />
   <button onclick="login()">Login</button>
@@ -93,66 +30,14 @@
 </div>
 
 <div id="user-content">
-  <h2>My Profile</h2>
-  <form onsubmit="saveProfile(event)">
-    <input type="text" id="nombre" placeholder="First Name" required><br>
-    <input type="text" id="apellido" placeholder="Last Name"><br>
-    <input type="tel" id="telefono" placeholder="Phone"><br>
-    <input type="email" id="emailProfile" placeholder="Email" disabled><br>
-    <button type="submit">Save Profile</button>
-  </form>
-  <br>
-  <p id="drive-link">Your cleaning link will appear here.</p>
-  <br>
+  <h3>Welcome!</h3>
+  <p id="user-email"></p>
   <button onclick="logout()">Logout</button>
 </div>
 
-<section class="hero">
-  <img src="assets/banner.png" alt="Hero Image" class="hero-img" />
-  <div class="hero-text">
-    <h1>Next-Gen Robotic Boat Hull Cleaning</h1>
-    <p>Efficient. Safe. Documented. Serving Miami, FL.</p>
-  </div>
-</section>
-
-<section id="services">
-  <h2>Our Services</h2>
-  <div class="card-container">
-    <div class="card"><img src="assets/inspection-icon.png" alt="Inspection"><h3>Inspection</h3><p>Hull Inspection with Photos</p></div>
-    <div class="card"><img src="assets/cleaning-icon.png" alt="Cleaning"><h3>Robotic Hull Cleaning</h3><p>Efficient and safe underwater cleaning</p></div>
-    <div class="card"><img src="assets/video-icon.png" alt="Video"><h3>Video Reports</h3><p>Before/After HD Video Documentation</p></div>
-  </div>
-</section>
-
-<section id="pricing">
-  <h2>Pricing</h2>
-  <div class="card-container">
-    <div class="card"><h3>Basic</h3><p>Inspection + Photos</p><strong>$2.50/ft</strong></div>
-    <div class="card"><h3>Standard</h3><p>Cleaning + Status Record</p><strong>$2.75/ft</strong></div>
-    <div class="card"><h3>Premium</h3><p>Cleaning + Photos + Video</p><strong>$3.00/ft</strong></div>
-  </div>
-</section>
-
-<section id="fleet">
-  <h2>Our Fleet</h2>
-  <div class="fleet-images">
-    <img src="assets/robot.png" alt="Robot" />
-    <img src="assets/van.png" alt="RivMar Van" />
-  </div>
-</section>
-
-<section id="contact">
-  <h2>Contact Us</h2>
-  <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
-  <p>Phone: <a href="tel:+17863669294">(786) 366-9294</a></p>
-</section>
-
-<footer><p>© 2025 RivMar Group. All rights reserved.</p></footer>
-
+<!-- Firebase SDKs -->
 <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-firestore.js"></script>
-
 <script>
   const firebaseConfig = {
     apiKey: "AIzaSyALCBhybMXTS_SPzC013YEkWBwvPv-_QZY",
@@ -165,19 +50,16 @@
 
   firebase.initializeApp(firebaseConfig);
   const auth = firebase.auth();
-  const db = firebase.firestore();
-
-  function toggleAuth() {
-    const popup = document.getElementById("auth-popup");
-    popup.style.display = popup.style.display === "block" ? "none" : "block";
-  }
 
   function login() {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     auth.signInWithEmailAndPassword(email, password)
-      .then((userCredential) => loadUserData(userCredential.user))
-      .catch((error) => alert(error.message));
+      .then((userCredential) => {
+        document.getElementById("user-content").style.display = "block";
+        document.getElementById("user-email").innerText = "Logged in as: " + userCredential.user.email;
+      })
+      .catch((error) => alert("Login error: " + error.message));
   }
 
   function register() {
@@ -185,49 +67,25 @@
     const password = document.getElementById("password").value;
     auth.createUserWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        db.collection("users").doc(userCredential.user.uid).set({
-          email: email, driveLink: "", nombre: "", apellido: "", telefono: ""
-        });
-        loadUserData(userCredential.user);
+        alert("Registered successfully. Now log in.");
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => alert("Sign-up error: " + error.message));
   }
 
   function logout() {
     auth.signOut().then(() => {
       document.getElementById("user-content").style.display = "none";
+      alert("Logged out.");
     });
-  }
-
-  function loadUserData(user) {
-    db.collection("users").doc(user.uid).get().then(doc => {
-      const data = doc.data();
-      document.getElementById("nombre").value = data.nombre || "";
-      document.getElementById("apellido").value = data.apellido || "";
-      document.getElementById("telefono").value = data.telefono || "";
-      document.getElementById("emailProfile").value = data.email || "";
-      document.getElementById("drive-link").innerHTML = data.driveLink
-        ? `<a href="${data.driveLink}" target="_blank">View cleaning</a>` : "No cleaning link uploaded yet.";
-      document.getElementById("auth-popup").style.display = "none";
-      document.getElementById("user-content").style.display = "block";
-    });
-  }
-
-  function saveProfile(e) {
-    e.preventDefault();
-    const user = auth.currentUser;
-    if (!user) return;
-    const ref = db.collection("users").doc(user.uid);
-    ref.update({
-      nombre: document.getElementById("nombre").value,
-      apellido: document.getElementById("apellido").value,
-      telefono: document.getElementById("telefono").value
-    }).then(() => alert("Profile updated"));
   }
 
   auth.onAuthStateChanged(user => {
-    if (user) loadUserData(user);
+    if (user) {
+      document.getElementById("user-content").style.display = "block";
+      document.getElementById("user-email").innerText = "Logged in as: " + user.email;
+    }
   });
 </script>
+
 </body>
 </html>
