@@ -14,19 +14,18 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-document.getElementById('login-button').addEventListener('click', () => {
-  const email = document.getElementById('login-email').value;
-  const password = document.getElementById('login-password').value;
+window.login = function() {
+  const email = document.getElementById('loginEmail').value;
+  const password = document.getElementById('loginPassword').value;
   signInWithEmailAndPassword(auth, email, password)
     .then(() => alert("Login successful!"))
     .catch(error => alert("Login failed: " + error.message));
-});
+};
 
-document.getElementById('reset-password').addEventListener('click', () => {
-  const email = prompt("Enter your email to reset password:");
-  if (email) {
-    sendPasswordResetEmail(auth, email)
-      .then(() => alert("Password reset email sent"))
-      .catch(error => alert(error.message));
-  }
-});
+window.forgotPassword = function() {
+  const email = document.getElementById('loginEmail').value;
+  if (!email) return alert("Please enter your email first");
+  sendPasswordResetEmail(auth, email)
+    .then(() => alert("Password reset email sent"))
+    .catch(error => alert(error.message));
+};
