@@ -223,6 +223,8 @@ function logoutUser() {
   });
 }
 </script>
+
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
 import {
@@ -257,6 +259,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("login-btn");
   const signupBtn = document.getElementById("signup-btn");
   const forgotBtn = document.getElementById("forgot-btn");
+  const nameFields = document.getElementById("name-fields");
 
   if (loginBtn) {
     loginBtn.addEventListener("click", () => {
@@ -269,9 +272,6 @@ document.addEventListener("DOMContentLoaded", () => {
         .catch(err => alert("Login error: " + err.message));
     });
   }
-
-  
-  const nameFields = document.getElementById("name-fields");
 
   if (signupBtn) {
     signupBtn.addEventListener("click", () => {
@@ -303,22 +303,6 @@ document.addEventListener("DOMContentLoaded", () => {
           nameFields.style.display = "none";
           signupBtn.textContent = "Sign up";
         })
-        .catch(err => alert("Signup error: " + err.message));
-    });
-  }
-
-    signupBtn.addEventListener("click", () => {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-      const isValid = password.length >= 8 && /[A-Z]/.test(password);
-
-      if (!isValid) {
-        alert("Password must be at least 8 characters and include one uppercase letter.");
-        return;
-      }
-
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => alert("Account created. Please login."))
         .catch(err => alert("Signup error: " + err.message));
     });
   }
@@ -355,5 +339,6 @@ window.toggleProfileDropdown = () => {
   menu.style.display = menu.style.display === "block" ? "none" : "block";
 };
 </script>
+
 </body>
 </html>
