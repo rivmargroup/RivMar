@@ -1,153 +1,82 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>RivMar Client Access</title>
-  <style>
-    #login-panel {
-      max-width: 350px;
-      margin: 40px auto;
-      padding: 30px;
-      background: #fff;
-      border-radius: 12px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.08);
-      text-align: center;
-    }
-
-    #login-panel h2 {
-      font-size: 1.4rem;
-      color: #002f4b;
-      margin-bottom: 20px;
-    }
-
-    .login-input {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 1rem;
-    }
-
-    .login-button {
-      width: 100%;
-      padding: 12px;
-      margin-top: 10px;
-      background-color: #002f4b;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-weight: bold;
-      font-size: 1rem;
-      transition: background-color 0.3s ease;
-    }
-
-    .login-button:hover {
-      background-color: #004c75;
-      cursor: pointer;
-    }
-
-    #name-fields {
-      display: none;
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RivMar Services</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="login-panel">
-    <h2>Client Access</h2>
-    <input type="email" id="email" class="login-input" placeholder="Email" />
-    <div id="name-fields">
-      <input type="text" id="first-name" class="login-input" placeholder="First name" />
-      <input type="text" id="last-name" class="login-input" placeholder="Last name" />
+  <header>
+    <img src="logo.png" alt="RivMar Logo" class="logo" />
+    <nav>
+      <ul>
+        <li><a href="index.html">Services</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="login.html">Login</a></li>
+        <li><a href="signup.html">Sign up</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <img src="hero.jpg" alt="Boat Cleaning" class="hero-img" />
+    <div class="hero-text">
+      <h1>Next-Gen Robotic Boat Hull Cleaning</h1>
+      <p>Efficient. Safe. Documented. Serving Miami, FL.</p>
     </div>
-    <input type="password" id="password" class="login-input" placeholder="Password" />
-    <button id="login-btn" class="login-button">Login</button>
-    <button id="signup-btn" class="login-button">Sign up</button>
-    <button id="forgot-btn" class="login-button">Forgot password</button>
   </div>
 
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-    import {
-      getAuth,
-      signInWithEmailAndPassword,
-      createUserWithEmailAndPassword,
-      sendPasswordResetEmail,
-      signOut,
-      onAuthStateChanged
-    } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
+  <section id="services">
+    <h2>Our Services</h2>
+    <div class="card-container">
+      <div class="card">
+        <img src="icon-inspect.png" alt="Inspect">
+        <h3>Inspection</h3>
+        <p>Hull Inspection with Photos</p>
+      </div>
+      <div class="card">
+        <img src="icon-robot.png" alt="Cleaning">
+        <h3>Robotic Hull Cleaning</h3>
+        <p>Efficient and safe</p>
+      </div>
+      <div class="card">
+        <img src="icon-video.png" alt="Videos">
+        <h3>Video Reports</h3>
+        <p>Before/After HD Video</p>
+      </div>
+    </div>
+  </section>
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
-      authDomain: "rivmar-clientes.firebaseapp.com",
-      projectId: "rivmar-clientes",
-      storageBucket: "rivmar-clientes.appspot.com",
-      messagingSenderId: "631400927733",
-      appId: "1:631400927733:web:aab935d3fafb07e07490bc"
-    };
+  <section id="pricing">
+    <h2>Pricing</h2>
+    <div class="card-container">
+      <div class="card">
+        <h3>Basic</h3>
+        <p>Inspection + Photos<br><strong>$2.50/ft</strong></p>
+      </div>
+      <div class="card">
+        <h3>Standard</h3>
+        <p>Cleaning + Status Record<br><strong>$2.75/ft</strong></p>
+      </div>
+      <div class="card">
+        <h3>Premium</h3>
+        <p>Cleaning + Photos + Video<br><strong>$3.00/ft</strong></p>
+      </div>
+    </div>
+  </section>
 
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
+  <section id="fleet">
+    <h2>Our Fleet</h2>
+    <div class="fleet-images">
+      <img src="robot.jpg" alt="Robot cleaner" />
+      <img src="van.jpg" alt="RivMar van" />
+    </div>
+  </section>
 
-    const loginBtn = document.getElementById("login-btn");
-    const signupBtn = document.getElementById("signup-btn");
-    const forgotBtn = document.getElementById("forgot-btn");
-    const nameFields = document.getElementById("name-fields");
-
-    let signupMode = false;
-
-    signupBtn.addEventListener("click", () => {
-      if (!signupMode) {
-        nameFields.style.display = "block";
-        signupBtn.textContent = "Create account";
-        signupMode = true;
-        return;
-      }
-
-      const firstName = document.getElementById("first-name").value.trim();
-      const lastName = document.getElementById("last-name").value.trim();
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-
-      const isValid = password.length >= 8 && /[A-Z]/.test(password);
-      if (!isValid) {
-        alert("Password must be at least 8 characters and include one uppercase letter.");
-        return;
-      }
-
-      if (!firstName || !lastName) {
-        alert("Please enter your name and last name.");
-        return;
-      }
-
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          alert("Account created. Please login.");
-          nameFields.style.display = "none";
-          signupBtn.textContent = "Sign up";
-          signupMode = false;
-        })
-        .catch(err => alert("Signup error: " + err.message));
-    });
-
-    loginBtn.addEventListener("click", () => {
-      const email = document.getElementById("email").value.trim();
-      const password = document.getElementById("password").value.trim();
-      signInWithEmailAndPassword(auth, email, password)
-        .then(() => {
-          alert("Logged in!");
-        })
-        .catch(err => alert("Login error: " + err.message));
-    });
-
-    forgotBtn.addEventListener("click", () => {
-      const email = document.getElementById("email").value.trim();
-      if (!email) return alert("Enter your email first");
-      sendPasswordResetEmail(auth, email)
-        .then(() => alert("Password reset email sent."))
-        .catch(err => alert("Error: " + err.message));
-    });
-  </script>
+  <footer id="contact">
+    <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a> | Phone: (786) 366-9294</p>
+  </footer>
 </body>
 </html>
