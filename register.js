@@ -14,11 +14,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-document.getElementById('register-button').addEventListener('click', () => {
-  const firstName = document.getElementById('first-name').value;
-  const lastName = document.getElementById('last-name').value;
-  const email = document.getElementById('register-email').value;
-  const password = document.getElementById('register-password').value;
+window.register = function() {
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
+  const email = document.getElementById('registerEmail').value;
+  const password = document.getElementById('registerPassword').value;
 
   if (!/[A-Z]/.test(password) || password.length < 8) {
     alert("Password must be at least 8 characters and include one uppercase letter.");
@@ -31,6 +31,6 @@ document.getElementById('register-button').addEventListener('click', () => {
         displayName: `${firstName} ${lastName}`
       });
     })
-    .then(() => alert("Account created!"))
+    .then(() => alert("Account created successfully!"))
     .catch(error => alert("Signup failed: " + error.message));
-});
+};
