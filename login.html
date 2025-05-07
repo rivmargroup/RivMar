@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Login - RivMar</title>
-  <link rel="stylesheet" href="style.css">
-  <script type="module" src="login.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login | RivMar</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="auth-container">
-    <h2>Login</h2>
-    <input type="email" id="login-email" placeholder="Email">
-    <input type="password" id="login-password" placeholder="Password">
-    <button id="login-button">Login</button>
-    <p><a href="register.html">Create account</a> | <a href="#" id="reset-password">Forgot password?</a></p>
+  <div class="auth-card">
+    <h2>Client Access</h2>
+    <input type="email" id="loginEmail" placeholder="Email" />
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <button onclick="login()">Login</button>
+    <button onclick="window.location.href='register.html'">Create account</button>
+    <button onclick="forgotPassword()">Forgot password</button>
   </div>
+  <script src="login.js"></script>
 </body>
 </html>
