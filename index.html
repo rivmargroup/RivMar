@@ -1,27 +1,28 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>RivMar Login Test</title>
 </head>
 <body style="font-family: Arial; text-align: center; margin-top: 100px;">
 
   <h2>RivMar Login System</h2>
-  <input type="email" id="email" placeholder="Email" /><br><br>
-  <input type="password" id="password" placeholder="Password" /><br><br>
-  <button onclick="login()">Login</button>
-  <button onclick="register()">Sign up</button>
+  <input type="email" id="email" placeholder="Email"><br><br>
+  <input type="password" id="password" placeholder="Password"><br><br>
+  <button id="login-btn">Login</button>
+  <button id="signup-btn">Sign up</button>
 
-  <div id="user-data" style="margin-top: 30px; display:none;">
+  <div id="user-data" style="margin-top: 30px; display: none;">
     <p id="user-email"></p>
-    <button onclick="logout()">Logout</button>
+    <button id="logout-btn">Logout</button>
   </div>
 
-  <!-- 🔧 ESTE SCRIPT ES NECESARIO -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
+  <!-- Firebase Modular SDK -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
 
-  <script>
     const firebaseConfig = {
       apiKey: "AIzaSyALCBhybMXTS_SPzC013YEkWBwvPv-_QZY",
       authDomain: "rivmar-clientes.firebaseapp.com",
@@ -30,42 +31,48 @@
       messagingSenderId: "631400927733",
       appId: "1:631400927733:web:aab935d3fafb07e07490bc"
     };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
 
-    function login() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      auth.signInWithEmailAndPassword(email, password)
-        .then(user => {
-          document.getElementById("user-email").innerText = "Logged in as: " + user.user.email;
-          document.getElementById("user-data").style.display = "block";
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const loginBtn = document.getElementById("login-btn");
+    const signupBtn = document.getElementById("signup-btn");
+    const logoutBtn = document.getElementById("logout-btn");
+    const userDataDiv = document.getElementById("user-data");
+    const userEmailText = document.getElementById("user-email");
+
+    loginBtn.addEventListener("click", () => {
+      signInWithEmailAndPassword(auth, emailInput.value, passwordInput.value)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          userEmailText.textContent = "Logged in as: " + user.email;
+          userDataDiv.style.display = "block";
         })
-        .catch(err => alert("Login failed: " + err.message));
-    }
+        .catch((error) => alert("Login failed: " + error.message));
+    });
 
-    function register() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      auth.createUserWithEmailAndPassword(email, password)
-        .then(() => alert("User created! Now login."))
-        .catch(err => alert("Signup failed: " + err.message));
-    }
+    signupBtn.addEventListener("click", () => {
+      createUserWithEmailAndPassword(auth, emailInput.value, passwordInput.value)
+        .then(() => alert("User created! Now log in."))
+        .catch((error) => alert("Signup failed: " + error.message));
+    });
 
-    function logout() {
-      auth.signOut().then(() => {
-        document.getElementById("user-data").style.display = "none";
-        alert("Logged out.");
-      });
-    }
+    logoutBtn.addEventListener("click", () => {
+      signOut(auth)
+        .then(() => {
+          userDataDiv.style.display = "none";
+          alert("Logged out.");
+        });
+    });
 
-    auth.onAuthStateChanged(user => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
-        document.getElementById("user-email").innerText = "Logged in as: " + user.email;
-        document.getElementById("user-data").style.display = "block";
+        userEmailText.textContent = "Logged in as: " + user.email;
+        userDataDiv.style.display = "block";
       }
     });
   </script>
-
 </body>
 </html>
