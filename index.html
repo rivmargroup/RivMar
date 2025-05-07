@@ -283,13 +283,22 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   if (signupBtn) {
-    signupBtn.addEventListener("click", () => {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      createUserWithEmailAndPassword(auth, email, password)
-        .then(() => alert("Account created. Please login."))
-        .catch(err => alert("Signup error: " + err.message));
-    });
+  signupBtn.addEventListener("click", () => {
+    const email = document.getElementById("email").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    const isValid = password.length >= 8 && /[A-Z]/.test(password);
+
+    if (!isValid) {
+      alert("Password must be at least 8 characters and include one uppercase letter.");
+      return;
+    }
+
+    createUserWithEmailAndPassword(auth, email, password)
+      .then(() => alert("Account created. Please login."))
+      .catch(err => alert("Signup error: " + err.message));
+  });
+}
   }
 
   if (forgotBtn) {
