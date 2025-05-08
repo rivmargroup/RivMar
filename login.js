@@ -1,26 +1,34 @@
+// Firebase imports
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
+import {
+  getAuth,
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Login | RivMar</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
-</head>
-<body class="auth-page">
-  <div class="login-container">
-    <div class="login-form">
-      <img src="logo.png" alt="RivMar Logo" class="form-logo">
-      <h2>Welcome Back!</h2>
-      <input type="email" id="email" placeholder="Enter email..." />
-      <input type="password" id="password" placeholder="Enter password..." />
-      <button onclick="login()">Login</button>
-      <a href="#">Forgot your password?</a>
-      <p>Don't have an account? <a href="register.html">Sign up</a></p>
-    </div>
-    <img src="login-side.jpg" alt="Robot Cleaning" class="side-img">
-  </div>
-  <script src="firebase.js"></script>
-</body>
-</html>
+// Firebase config
+const firebaseConfig = {
+  apiKey: "TU_API_KEY",
+  authDomain: "TU_DOMINIO.firebaseapp.com",
+  projectId: "TU_PROYECTO_ID",
+  storageBucket: "TU_BUCKET.appspot.com",
+  messagingSenderId: "TU_MESSAGING_ID",
+  appId: "TU_APP_ID"
+};
+
+// Init Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+// Login handler
+document.getElementById("loginBtn").addEventListener("click", async () => {
+  const email = document.getElementById("email").value.trim();
+  const password = document.getElementById("password").value;
+
+  try {
+    await signInWithEmailAndPassword(auth, email, password);
+    alert("Login successful!");
+    window.location.href = "index.html";
+  } catch (error) {
+    alert("Login failed: " + error.message);
+  }
+});
