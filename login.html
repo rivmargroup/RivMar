@@ -1,20 +1,53 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Login | RivMar</title>
+  <meta charset="UTF-8">
+  <title>Login - RivMar</title>
   <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
 </head>
-<body>
-  <div class="auth-card">
+<body class="auth-page">
+  <div class="auth-container">
     <h2>Client Access</h2>
-    <input type="email" id="loginEmail" placeholder="Email" />
-    <input type="password" id="loginPassword" placeholder="Password" />
+    <input type="email" id="email" placeholder="Email" />
+    <input type="password" id="password" placeholder="Password" />
     <button onclick="login()">Login</button>
-    <button onclick="window.location.href='register.html'">Create account</button>
+    <a href="register.html"><button>Create account</button></a>
     <button onclick="forgotPassword()">Forgot password</button>
   </div>
-  <script src="login.js"></script>
+
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyALCBhybMXTS_SPzC013YEkWBwvPv-_QZY",
+      authDomain: "rivmar-clientes.firebaseapp.com",
+      projectId: "rivmar-clientes",
+      storageBucket: "rivmar-clientes.appspot.com",
+      messagingSenderId: "631400927733",
+      appId: "1:631400927733:web:aab935d3fafb07e07490bc"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
+    function login() {
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      auth.signInWithEmailAndPassword(email, password)
+        .then(() => {
+          alert("Logged in!");
+          window.location.href = "index.html";
+        })
+        .catch(err => alert("Login failed: " + err.message));
+    }
+
+    function forgotPassword() {
+      const email = document.getElementById("email").value;
+      if (!email) return alert("Enter your email first.");
+      auth.sendPasswordResetEmail(email)
+        .then(() => alert("Password reset sent."))
+        .catch(err => alert(err.message));
+    }
+  </script>
 </body>
 </html>
