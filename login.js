@@ -1,31 +1,26 @@
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
-  authDomain: "rivmar-clientes.firebaseapp.com",
-  projectId: "rivmar-clientes",
-  storageBucket: "rivmar-clientes.appspot.com",
-  messagingSenderId: "631400927733",
-  appId: "1:631400927733:web:aab935d3fafb07e07490bc"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-window.login = function() {
-  const email = document.getElementById('loginEmail').value;
-  const password = document.getElementById('loginPassword').value;
-  signInWithEmailAndPassword(auth, email, password)
-    .then(() => alert("Login successful!"))
-    .catch(error => alert("Login failed: " + error.message));
-};
-
-window.forgotPassword = function() {
-  const email = document.getElementById('loginEmail').value;
-  if (!email) return alert("Please enter your email first");
-  sendPasswordResetEmail(auth, email)
-    .then(() => alert("Password reset email sent"))
-    .catch(error => alert(error.message));
-};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | RivMar</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
+</head>
+<body class="auth-page">
+  <div class="login-container">
+    <div class="login-form">
+      <img src="logo.png" alt="RivMar Logo" class="form-logo">
+      <h2>Welcome Back!</h2>
+      <input type="email" id="email" placeholder="Enter email..." />
+      <input type="password" id="password" placeholder="Enter password..." />
+      <button onclick="login()">Login</button>
+      <a href="#">Forgot your password?</a>
+      <p>Don't have an account? <a href="register.html">Sign up</a></p>
+    </div>
+    <img src="login-side.jpg" alt="Robot Cleaning" class="side-img">
+  </div>
+  <script src="firebase.js"></script>
+</body>
+</html>
