@@ -1,8 +1,10 @@
-body.login-page {
+body {
   margin: 0;
-  padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #eafaff;
+  background-color: #eefdff;
+}
+
+.login-page {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,13 +12,13 @@ body.login-page {
 }
 
 .login-container {
-  background: white;
-  border-radius: 16px;
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
   display: flex;
-  overflow: hidden;
   width: 900px;
-  max-width: 95%;
+  height: 500px;
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
 }
 
 .login-box {
@@ -24,71 +26,69 @@ body.login-page {
   width: 100%;
 }
 
-.login-left, .login-right {
-  flex: 1;
-  padding: 40px;
-}
-
 .login-left {
-  background-color: #fff;
+  flex: 1;
+  padding: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .login-left h2 {
-  margin-bottom: 10px;
   font-size: 26px;
-  color: #333;
+  margin-bottom: 10px;
+  color: #002f4b;
 }
 
 .login-left p {
-  margin-bottom: 25px;
-  color: #666;
-}
-
-.login-left label {
   font-size: 14px;
-  margin-top: 15px;
+  margin-bottom: 25px;
   color: #555;
 }
 
+.login-left form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login-left label {
+  font-size: 13px;
+  margin-bottom: 6px;
+  color: #333;
+}
+
 .login-left input {
-  width: 100%;
-  padding: 12px;
-  margin-top: 5px;
+  padding: 10px;
+  margin-bottom: 20px;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 14px;
 }
 
 .login-left button {
-  margin-top: 25px;
-  width: 100%;
-  padding: 14px;
-  border: none;
-  background-color: #0082b3;
+  padding: 12px;
+  background-color: #0077b6;
   color: white;
-  font-size: 15px;
+  border: none;
+  border-radius: 6px;
   font-weight: bold;
-  border-radius: 8px;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background-color 0.3s;
 }
 
 .login-left button:hover {
-  background-color: #005f7a;
+  background-color: #005b8a;
 }
 
 .login-links {
   margin-top: 20px;
   font-size: 13px;
-  color: #666;
 }
 
 .login-links a {
-  color: #0077cc;
+  color: #0077b6;
   text-decoration: none;
+  margin-right: 10px;
 }
 
 .login-links a:hover {
@@ -96,14 +96,14 @@ body.login-page {
 }
 
 .login-right {
-  background-color: #d7f2f9;
+  flex: 1;
+  background-color: #d5f4ff;
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 }
 
 .login-right img {
-  max-width: 100%;
-  max-height: 350px;
-  object-fit: contain;
+  max-width: 90%;
+  height: auto;
 }
