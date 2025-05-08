@@ -1,7 +1,8 @@
+/* login.css */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #eefdff;
+  background-color: #eaf8fa;
 }
 
 .login-page {
@@ -12,13 +13,13 @@ body {
 }
 
 .login-container {
+  background: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
   display: flex;
-  width: 900px;
-  height: 500px;
-  background-color: #fff;
-  border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  width: 100%;
 }
 
 .login-box {
@@ -28,22 +29,18 @@ body {
 
 .login-left {
   flex: 1;
-  padding: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 50px 40px;
 }
 
 .login-left h2 {
-  font-size: 26px;
+  font-size: 28px;
   margin-bottom: 10px;
-  color: #002f4b;
+  color: #0a375b;
 }
 
 .login-left p {
-  font-size: 14px;
-  margin-bottom: 25px;
-  color: #555;
+  margin-bottom: 30px;
+  color: #666;
 }
 
 .login-left form {
@@ -52,43 +49,43 @@ body {
 }
 
 .login-left label {
-  font-size: 13px;
   margin-bottom: 6px;
   color: #333;
+  font-weight: bold;
 }
 
 .login-left input {
-  padding: 10px;
+  padding: 12px;
   margin-bottom: 20px;
+  border-radius: 8px;
   border: 1px solid #ccc;
-  border-radius: 6px;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .login-left button {
   padding: 12px;
-  background-color: #0077b6;
+  background-color: #0079aa;
   color: white;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   font-weight: bold;
+  font-size: 16px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.2s ease;
 }
 
 .login-left button:hover {
-  background-color: #005b8a;
+  background-color: #005f85;
 }
 
 .login-links {
-  margin-top: 20px;
-  font-size: 13px;
+  margin-top: 16px;
+  font-size: 14px;
 }
 
 .login-links a {
-  color: #0077b6;
+  color: #0079aa;
   text-decoration: none;
-  margin-right: 10px;
 }
 
 .login-links a:hover {
@@ -97,13 +94,16 @@ body {
 
 .login-right {
   flex: 1;
-  background-color: #d5f4ff;
+  background-color: #d7f2f7;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
 }
 
 .login-right img {
-  max-width: 90%;
+  width: 100%;
   height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  padding: 20px;
 }
