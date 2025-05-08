@@ -1,44 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Login - RivMar</title>
-  <script type="module">
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
-
-    const firebaseConfig = {
-      apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
-      authDomain: "rivmar-clientes.firebaseapp.com",
-      projectId: "rivmar-clientes",
-      storageBucket: "rivmar-clientes.appspot.com",
-      messagingSenderId: "631400927733",
-      appId: "1:631400927733:web:aab935d3fafb07e07490bc"
-    };
-
-    const app = initializeApp(firebaseConfig);
-    const auth = getAuth(app);
-
-    window.onload = () => {
-      document.getElementById("login-btn").addEventListener("click", () => {
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-
-        signInWithEmailAndPassword(auth, email, password)
-          .then(() => {
-            window.location.href = "index.html";
-          })
-          .catch((error) => {
-            alert("Login failed: " + error.message);
-          });
-      });
-    };
-  </script>
+  <link rel="stylesheet" href="login.css" />
 </head>
-<body style="font-family: sans-serif; background-color: #eefbff; padding: 40px;">
-  <h2>Client Access</h2>
-  <input type="email" id="email" placeholder="Email" style="padding: 8px; margin: 5px;" />
-  <input type="password" id="password" placeholder="Password" style="padding: 8px; margin: 5px;" />
-  <button id="login-btn" style="padding: 8px 16px; margin: 5px;">Login</button>
+<body>
+  <div class="container">
+    <div class="login-box">
+      <div class="form-section">
+        <h2>Welcome Back!</h2>
+        <p>Log Into Your Account</p>
+        <form id="loginForm">
+          <label>Email</label>
+          <input type="email" id="email" placeholder="Enter email..." required/>
+          <label>Password</label>
+          <input type="password" id="password" placeholder="Enter password..." required/>
+          <button type="submit">Login</button>
+          <div class="links">
+            <a href="#">Forgot your password?</a>
+            <p>Don't Have An Account? <a href="register.html">Sign Up</a></p>
+          </div>
+        </form>
+      </div>
+      <div class="image-section">
+        <img src="robot-login.jpg" alt="RivMar Bot"/>
+      </div>
+    </div>
+  </div>
+  <script src="login.js"></script>
 </body>
 </html>
