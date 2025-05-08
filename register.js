@@ -1,36 +1,25 @@
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-import { getAuth, createUserWithEmailAndPassword, updateProfile } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
-  authDomain: "rivmar-clientes.firebaseapp.com",
-  projectId: "rivmar-clientes",
-  storageBucket: "rivmar-clientes.appspot.com",
-  messagingSenderId: "631400927733",
-  appId: "1:631400927733:web:aab935d3fafb07e07490bc"
-};
-
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-window.register = function() {
-  const firstName = document.getElementById('firstName').value;
-  const lastName = document.getElementById('lastName').value;
-  const email = document.getElementById('registerEmail').value;
-  const password = document.getElementById('registerPassword').value;
-
-  if (!/[A-Z]/.test(password) || password.length < 8) {
-    alert("Password must be at least 8 characters and include one uppercase letter.");
-    return;
-  }
-
-  createUserWithEmailAndPassword(auth, email, password)
-    .then(userCredential => {
-      return updateProfile(userCredential.user, {
-        displayName: `${firstName} ${lastName}`
-      });
-    })
-    .then(() => alert("Account created successfully!"))
-    .catch(error => alert("Signup failed: " + error.message));
-};
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Register | RivMar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body class="auth-page">
+  <div class="login-container">
+    <div class="login-form">
+      <img src="logo.png" alt="RivMar Logo" class="form-logo">
+      <h2>Create Your Account</h2>
+      <input type="text" id="firstname" placeholder="First Name..." />
+      <input type="text" id="lastname" placeholder="Last Name..." />
+      <input type="email" id="email" placeholder="Enter email..." />
+      <input type="password" id="password" placeholder="Create password..." />
+      <button onclick="register()">Create Account</button>
+      <p>Already have an account? <a href="login.html">Login</a></p>
+    </div>
+    <img src="login-side.jpg" alt="Robot Cleaning" class="side-img">
+  </div>
+  <script src="firebase.js"></script>
+</body>
+</html>
