@@ -1,4 +1,4 @@
-// Firebase config
+// Firebase Config
 const firebaseConfig = {
   apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
   authDomain: "rivmar-clientes.firebaseapp.com",
@@ -8,26 +8,23 @@ const firebaseConfig = {
   appId: "1:631400927733:web:aab935d3fafb07e07490bc"
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
-// Show user info on profile page
-firebase.auth().onAuthStateChanged(user => {
+auth.onAuthStateChanged(user => {
   if (user) {
-    const nameEl = document.getElementById("user-name");
-    const emailEl = document.getElementById("user-email");
+    const name = user.displayName || "User";
+    const email = user.email;
 
-    // Mostrar displayName si existe, sino mostrar "User"
-    nameEl.textContent = user.displayName || "User";
-    emailEl.textContent = user.email;
+    document.getElementById("user-name").textContent = name;
+    document.getElementById("user-email").textContent = email;
   } else {
-    window.location.href = "login.html";
+    window.location.href = "login.html"; // redirect if not logged in
   }
 });
 
-// Handle logout
 document.getElementById("logout-btn").addEventListener("click", () => {
-  firebase.auth().signOut().then(() => {
+  auth.signOut().then(() => {
     window.location.href = "login.html";
   });
 });
