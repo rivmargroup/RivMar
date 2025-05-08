@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login | RivMar</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - RivMar</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body class="login-page">
@@ -14,30 +14,26 @@
         <p>Log Into Your Account</p>
         <form id="login-form">
           <label for="email">Email</label>
-          <input type="email" id="email" placeholder="Enter email..." required />
+          <input type="email" id="email" required />
 
           <label for="password">Password</label>
-          <input type="password" id="password" placeholder="Enter password..." required />
+          <input type="password" id="password" required />
 
           <button type="submit">Login</button>
         </form>
 
         <div class="login-links">
-          <a href="#">Forgot your password?</a><br>
-          <span>Don't have an account? <a href="register.html">Sign up</a></span>
+          <a href="#">Forgot your password?</a>
+          <p>Don't Have An Account? <a href="register.html">Sign Up</a></p>
         </div>
       </div>
+
       <div class="login-right">
-        <img src="assets/robot.png" alt="RivMar Bot">
+        <img src="assets/robot.png" alt="RivMar Bot" />
       </div>
     </div>
   </div>
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  
-  <!-- Your login logic -->
   <script src="login.js"></script>
 </body>
 </html>
