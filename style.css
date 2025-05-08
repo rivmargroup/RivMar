@@ -1,49 +1,94 @@
 
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4fdff;
   margin: 0;
-  padding: 0;
+  background-color: #f0fdff;
 }
 header {
-  background: #002f4b;
-  color: white;
-  padding: 1em;
+  background-color: #003049;
   display: flex;
   justify-content: space-between;
+  padding: 20px 50px;
+  align-items: center;
 }
-nav a {
+.logo {
+  height: 60px;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+.hero {
+  position: relative;
+}
+.hero-img {
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
+}
+.hero-text {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0,0,0,0.6);
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+}
+.auth-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #e9f8fd;
+}
+.login-container {
+  display: flex;
+  max-width: 900px;
+  background-color: white;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+.login-form {
+  padding: 40px;
+  width: 50%;
+}
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #003049;
+}
+.login-form input {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background-color: #0077b6;
   color: white;
-  margin-left: 15px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+.login-form a {
+  display: block;
+  margin-top: 10px;
+  color: #0077b6;
   text-decoration: none;
 }
-.auth-card {
-  background: white;
-  max-width: 300px;
-  margin: 50px auto;
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-.auth-card h2 {
-  text-align: center;
-  color: #002f4b;
-}
-.auth-card input {
-  display: block;
-  width: 100%;
-  margin: 10px 0;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-}
-.auth-card button {
-  width: 100%;
-  padding: 10px;
-  background: #002f4b;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-top: 10px;
+.side-img {
+  width: 50%;
+  object-fit: cover;
 }
