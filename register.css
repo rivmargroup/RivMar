@@ -1,76 +1,106 @@
-
+/* register.css */
 body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #e6f7fb;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eaf8fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
-.login-container {
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    background-color: white;
-    border-radius: 12px;
-    display: flex;
-    max-width: 900px;
-    overflow: hidden;
+
+.register-container {
+  background: white;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  display: flex;
+  overflow: hidden;
+  max-width: 900px;
+  width: 100%;
 }
-.login-box {
-    display: flex;
-    width: 100%;
+
+.register-box {
+  display: flex;
+  width: 100%;
 }
-.login-left {
-    flex: 1;
-    padding: 40px;
+
+.register-left {
+  flex: 1;
+  padding: 50px 40px;
 }
-.login-left h2 {
-    margin-bottom: 10px;
-    font-size: 24px;
+
+.register-left h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+  color: #0a375b;
 }
-.login-left p {
-    color: #555;
+
+.register-left p {
+  margin-bottom: 30px;
+  color: #666;
 }
-.login-left form {
-    display: flex;
-    flex-direction: column;
+
+.register-left form {
+  display: flex;
+  flex-direction: column;
 }
-.login-left label {
-    margin-top: 15px;
-    margin-bottom: 5px;
-    font-size: 14px;
+
+.register-left label {
+  margin-bottom: 6px;
+  color: #333;
+  font-weight: bold;
 }
-.login-left input {
-    padding: 10px;
-    font-size: 14px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
+
+.register-left input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
 }
-.login-left button {
-    margin-top: 20px;
-    padding: 12px;
-    background-color: #0077b6;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
+
+.register-left button {
+  padding: 12px;
+  background-color: #0079aa;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
 }
-.login-left .links {
-    margin-top: 10px;
-    font-size: 12px;
+
+.register-left button:hover {
+  background-color: #005f85;
 }
-.login-left .links a {
-    color: #0077b6;
-    text-decoration: none;
+
+.register-links {
+  margin-top: 16px;
+  font-size: 14px;
 }
-.login-right {
-    flex: 1;
-    background-color: #d4f1f9;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+.register-links a {
+  color: #0079aa;
+  text-decoration: none;
 }
-.login-right img {
-    max-width: 100%;
-    height: auto;
+
+.register-links a:hover {
+  text-decoration: underline;
+}
+
+.register-right {
+  flex: 1;
+  background-color: #b2e7f3; /* más azul para que destaque el logo */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.register-right img {
+  width: 100%;
+  height: auto;
+  max-height: 100%;
+  object-fit: cover;
+  padding: 20px;
 }
