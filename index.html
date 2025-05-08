@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RivMar Group</title>
   <link rel="stylesheet" href="style.css">
@@ -12,40 +12,85 @@
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: #f4fdff;
       color: #111;
       line-height: 1.6;
     }
+
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 40px;
+      padding: 15px 30px;
       background-color: #002f4b;
+      flex-wrap: wrap;
     }
+
     .logo {
-      height: 90px;
+      height: 60px;
     }
+
+    nav {
+      display: flex;
+      align-items: center;
+    }
+
     nav ul {
       list-style: none;
       display: flex;
       gap: 20px;
     }
+
     nav ul li a {
       color: #fff;
       text-decoration: none;
       font-weight: 600;
     }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      color: white;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background-color: #002f4b;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        display: none;
+        padding: 20px 0;
+        z-index: 99;
+      }
+
+      nav ul.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+    }
+
     .hero {
       position: relative;
     }
+
     .hero-img {
       width: 100%;
       height: 400px;
       object-fit: cover;
     }
+
     .hero-text {
       position: absolute;
       top: 50%;
@@ -57,21 +102,25 @@
       padding: 20px 30px;
       border-radius: 12px;
     }
+
     h1, h2 {
       font-weight: 700;
       margin-bottom: 20px;
     }
+
     section {
       padding: 60px 20px;
       max-width: 1200px;
       margin: auto;
     }
+
     .card-container {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
       gap: 30px;
     }
+
     .card {
       background: #fff;
       border-radius: 12px;
@@ -80,11 +129,13 @@
       text-align: center;
       width: 280px;
     }
+
     .card img {
       width: 60px;
       height: auto;
       margin-bottom: 15px;
     }
+
     .fleet-images {
       display: flex;
       justify-content: center;
@@ -92,17 +143,20 @@
       flex-wrap: wrap;
       margin-top: 30px;
     }
+
     .fleet-images img {
       width: 300px;
       border-radius: 10px;
       object-fit: cover;
     }
+
     footer {
       text-align: center;
       padding: 30px;
       background-color: #002f4b;
       color: white;
     }
+
     #contact a {
       color: #004c9a;
       text-decoration: none;
@@ -110,10 +164,13 @@
   </style>
 </head>
 <body>
+
+  <!-- Header -->
   <header>
     <img src="assets/logo blanco.png" alt="RivMar Logo" class="logo">
+    <button class="menu-toggle" id="menu-toggle">☰</button>
     <nav>
-      <ul>
+      <ul id="menu">
         <li><a href="#services">Services</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -124,6 +181,7 @@
     </nav>
   </header>
 
+  <!-- Hero -->
   <section class="hero">
     <img src="assets/banner.png" alt="Hero Image" class="hero-img">
     <div class="hero-text">
@@ -132,6 +190,7 @@
     </div>
   </section>
 
+  <!-- Services -->
   <section id="services">
     <h2>Our Services</h2>
     <div class="card-container">
@@ -153,6 +212,7 @@
     </div>
   </section>
 
+  <!-- Pricing -->
   <section id="pricing">
     <h2>Pricing</h2>
     <div class="card-container">
@@ -174,6 +234,7 @@
     </div>
   </section>
 
+  <!-- Fleet -->
   <section id="fleet">
     <h2>Our Fleet</h2>
     <div class="fleet-images">
@@ -182,17 +243,19 @@
     </div>
   </section>
 
+  <!-- Contact -->
   <section id="contact">
     <h2>Contact Us</h2>
     <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
     <p>Phone: <a href="tel:+17863669294">(786) 366-9294</a></p>
   </section>
 
+  <!-- Footer -->
   <footer>
     <p>© 2025 RivMar Group. All rights reserved.</p>
   </footer>
 
-  <!-- Firebase -->
+  <!-- Firebase + Responsive Nav Logic -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script>
@@ -220,6 +283,13 @@
         signup.style.display = "inline";
         profile.style.display = "none";
       }
+    });
+
+    // Menu toggle for mobile
+    const toggleBtn = document.getElementById("menu-toggle");
+    const menu = document.getElementById("menu");
+    toggleBtn.addEventListener("click", () => {
+      menu.classList.toggle("active");
     });
   </script>
 </body>
