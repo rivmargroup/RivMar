@@ -3,9 +3,6 @@ body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #eaf8fa;
-}
-
-.login-page {
   display: flex;
   justify-content: center;
   align-items: center;
