@@ -1,0 +1,96 @@
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: #e6f7fc;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-box {
+  display: flex;
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  max-width: 900px;
+  width: 100%;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.form-section {
+  flex: 1;
+  padding: 50px;
+}
+
+.form-section h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.form-section p {
+  margin-bottom: 30px;
+  color: #666;
+}
+
+.form-section form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-section label {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.form-section input {
+  padding: 12px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.form-section button {
+  background: #007dbd;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.form-section button:hover {
+  background: #005f94;
+}
+
+.links {
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+.links a {
+  color: #007dbd;
+  text-decoration: none;
+}
+
+.image-section {
+  flex: 1;
+  background: #d6f2fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-section img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
