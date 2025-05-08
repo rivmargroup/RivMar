@@ -4,16 +4,46 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Profile - RivMar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
       background: #eaf8fa;
+      min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
-      min-height: 100vh;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 40px;
+      background-color: #002f4b;
+      width: 100%;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
     }
 
     .profile-card {
@@ -24,6 +54,7 @@
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
       width: 90%;
       max-width: 400px;
+      margin-top: 60px;
     }
 
     .profile-icon {
@@ -85,8 +116,22 @@
 </head>
 <body>
 
+  <!-- Header Navigation -->
+  <header>
+    <img src="assets/logo.png" alt="RivMar Logo" class="logo">
+    <nav>
+      <ul>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#pricing">Pricing</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Profile Card -->
   <div class="profile-card">
-    <div class="profile-icon">👤</div>
+    <div class="profile-icon">⚓</div>
     <h2 id="user-name">User Name</h2>
     <p id="user-email">user@example.com</p>
 
@@ -98,9 +143,10 @@
     <button class="logout" id="logout-btn">Logout</button>
   </div>
 
-  <!-- Firebase -->
+  <!-- Firebase + JS -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="profile.js"></script>
+
 </body>
 </html>
