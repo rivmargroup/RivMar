@@ -1,34 +1,33 @@
-// Firebase imports
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js";
-import {
-  getAuth,
-  signInWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js";
+// Importa e inicializa Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-auth.js";
 
-// Firebase config
+// Configuración de Firebase (la tuya)
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_DOMINIO.firebaseapp.com",
-  projectId: "TU_PROYECTO_ID",
-  storageBucket: "TU_BUCKET.appspot.com",
-  messagingSenderId: "TU_MESSAGING_ID",
-  appId: "TU_APP_ID"
+  apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
+  authDomain: "rivmar-clientes.firebaseapp.com",
+  projectId: "rivmar-clientes",
+  storageBucket: "rivmar-clientes.appspot.com",
+  messagingSenderId: "631400927733",
+  appId: "1:631400927733:web:aab935d3fafb07e07490bc"
 };
 
-// Init Firebase
+// Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-// Login handler
-document.getElementById("loginBtn").addEventListener("click", async () => {
-  const email = document.getElementById("email").value.trim();
+// Referencia al botón y campos
+document.getElementById("login-btn").addEventListener("click", () => {
+  const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
-  try {
-    await signInWithEmailAndPassword(auth, email, password);
-    alert("Login successful!");
-    window.location.href = "index.html";
-  } catch (error) {
-    alert("Login failed: " + error.message);
-  }
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // ✅ Éxito: redirigir a index.html
+      alert("Login successful!");
+      window.location.href = "index.html";
+    })
+    .catch((error) => {
+      alert("Login failed: " + error.message);
+    });
 });
