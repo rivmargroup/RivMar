@@ -91,7 +91,7 @@ body {
 
 .register-right {
   flex: 1;
-  background-color: #b2e7f3; /* más azul para que destaque el logo */
+  background-color: #9edff1 ; /* más azul para que destaque el logo */
   display: flex;
   justify-content: center;
   align-items: center;
