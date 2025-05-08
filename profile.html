@@ -21,17 +21,22 @@
       align-items: center;
     }
 
+    /* Header */
     header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 20px 40px;
+      padding: 20px 30px;
       background-color: #002f4b;
       width: 100%;
     }
 
     .logo {
-      height: 90px;
+      height: 70px;
+    }
+
+    nav {
+      position: relative;
     }
 
     nav ul {
@@ -46,107 +51,16 @@
       font-weight: 600;
     }
 
-    .profile-card {
-      background: white;
-      border-radius: 20px;
-      padding: 40px 30px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-      width: 90%;
-      max-width: 400px;
-      margin-top: 60px;
-    }
-
-    .profile-icon {
-      background-color: #0079aa;
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin: 0 auto 20px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .menu-toggle {
+      display: none;
+      font-size: 30px;
       color: white;
-      font-size: 48px;
-    }
-
-    h2 {
-      margin: 10px 0 5px;
-      color: #0a375b;
-    }
-
-    p {
-      color: #555;
-      margin-bottom: 30px;
-    }
-
-    .button-row {
-      display: flex;
-      gap: 10px;
-      justify-content: center;
-      margin-bottom: 15px;
-    }
-
-    button {
-      flex: 1;
-      padding: 12px;
-      border: none;
-      border-radius: 8px;
-      font-size: 16px;
       cursor: pointer;
-      font-weight: 600;
-      background-color: #0079aa;
-      color: white;
-      transition: background-color 0.3s ease;
     }
 
-    button:hover {
-      background-color: #005f85;
-    }
-
-    .logout {
-      background-color: #e74c3c;
-      margin-top: 10px;
-    }
-
-    .logout:hover {
-      background-color: #c0392b;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Header Navigation -->
-  <header>
-    <img src="assets/logo blanco.png" alt="RivMar Logo" class="logo">
-    <nav>
-      <ul>
-        <li><a href="index.html#services">Services</a></li>
-        <li><a href="index.html#pricing">Pricing</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-        <li><a href="profile.html">Profile</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <!-- Profile Card -->
-  <div class="profile-card">
-    <div class="profile-icon">⚓</div>
-    <h2 id="user-name">User Name</h2>
-    <p id="user-email">user@example.com</p>
-
-    <div class="button-row">
-      <button>Inbox</button>
-      <button>Files</button>
-    </div>
-
-    <button class="logout" id="logout-btn">Logout</button>
-  </div>
-
-  <!-- Firebase + JS -->
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
-  <script src="profile.js"></script>
-
-</body>
-</html>
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        background-color: #002f4b;
+        position: absolute;
