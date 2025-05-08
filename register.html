@@ -1,51 +1,75 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Register - RivMar</title>
-  <link rel="stylesheet" href="style.css" />
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Account - RivMar</title>
+  <link rel="stylesheet" href="register.css" />
 </head>
-<body class="auth-page">
-  <div class="auth-container">
-    <h2>Create Account</h2>
-    <input type="text" id="firstname" placeholder="First name" />
-    <input type="text" id="lastname" placeholder="Last name" />
-    <input type="email" id="email" placeholder="Email" />
-    <input type="password" id="password" placeholder="Password" />
-    <button onclick="register()">Register</button>
-    <a href="login.html"><button>Back to login</button></a>
+<body>
+  <div class="register-container">
+    <div class="register-box">
+      <div class="register-left">
+        <h2>Create Account</h2>
+        <p>Join RivMar to get started</p>
+        <form id="register-form">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" name="firstName" required />
+
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" name="lastName" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+
+          <label for="password">Password</label>
+          <input type="password" id="password" name="password" required />
+
+          <button type="submit">Register</button>
+        </form>
+        <div class="register-links">
+          <p>Already have an account? <a href="login.html">Login</a></p>
+        </div>
+      </div>
+      <div class="register-right">
+        <img src="assets/logo.png" alt="RivMar Logo">
+      </div>
+    </div>
   </div>
 
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+  <!-- Register logic -->
   <script>
     const firebaseConfig = {
-      apiKey: "AIzaSyALCBhybMXTS_SPzC013YEkWBwvPv-_QZY",
+      apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
       authDomain: "rivmar-clientes.firebaseapp.com",
       projectId: "rivmar-clientes",
       storageBucket: "rivmar-clientes.appspot.com",
       messagingSenderId: "631400927733",
       appId: "1:631400927733:web:aab935d3fafb07e07490bc"
     };
+
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
-    function register() {
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
+    document.getElementById("register-form").addEventListener("submit", function (e) {
+      e.preventDefault();
 
-      if (password.length < 8 || !/[A-Z]/.test(password)) {
-        return alert("Password must be at least 8 characters and include one uppercase letter.");
-      }
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
 
       auth.createUserWithEmailAndPassword(email, password)
         .then(() => {
-          alert("Account created!");
-          window.location.href = "index.html";
+          alert("Account created successfully!");
+          window.location.href = "login.html";
         })
-        .catch(err => alert("Signup failed: " + err.message));
-    }
+        .catch((error) => {
+          alert("Error: " + error.message);
+        });
+    });
   </script>
 </body>
 </html>
