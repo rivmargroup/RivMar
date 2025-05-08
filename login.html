@@ -21,11 +21,19 @@
 
           <button type="submit">Login</button>
         </form>
-        <div class="links">
-          <a href="#">Forgot your password?</a>
-          <p>Don't have an account? <a href="register.html">Sign Up</a></p>
+
+        <!-- Forgot password UI -->
+        <div id="forgot-section" style="margin-top: 10px;">
+          <a href="#" id="forgot-password">Forgot your password?</a>
+          <div id="reset-fields" style="display: none; margin-top: 10px;">
+            <input type="email" id="recovery-email" placeholder="Enter your email" />
+            <button id="send-reset">Send Reset Link</button>
+          </div>
         </div>
+
+        <p>Don't have an account? <a href="register.html">Sign Up</a></p>
       </div>
+
       <div class="login-right">
         <img src="assets/logo.png" alt="RivMar Bot" />
       </div>
@@ -36,7 +44,7 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
 
-  <!-- Login logic inline -->
+  <!-- Login + Password Reset Logic -->
   <script>
     const firebaseConfig = {
       apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
@@ -50,6 +58,7 @@
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
 
+    // Handle login
     document.getElementById("login-form").addEventListener("submit", function(e) {
       e.preventDefault();
 
@@ -62,6 +71,29 @@
         })
         .catch((error) => {
           alert("Login failed: " + error.message);
+        });
+    });
+
+    // Show password reset input
+    document.getElementById("forgot-password").addEventListener("click", function(e) {
+      e.preventDefault();
+      document.getElementById("reset-fields").style.display = "block";
+    });
+
+    // Send password reset email
+    document.getElementById("send-reset").addEventListener("click", function() {
+      const recoveryEmail = document.getElementById("recovery-email").value.trim();
+      if (!recoveryEmail) {
+        alert("Please enter your email.");
+        return;
+      }
+
+      auth.sendPasswordResetEmail(recoveryEmail)
+        .then(() => {
+          alert("Password reset email sent.");
+        })
+        .catch((error) => {
+          alert("Error: " + error.message);
         });
     });
   </script>
