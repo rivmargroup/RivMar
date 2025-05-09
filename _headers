@@ -1,0 +1,2 @@
+/*
+  Content-Security-Policy: default-src 'self'; script-src 'self' https://www.gstatic.com https://www.googleapis.com https://*.firebaseio.com https://www.gstatic.com/firebasejs/; connect-src 'self' https://www.googleapis.com https://*.firebaseio.com https://identitytoolkit.googleapis.com https://securetoken.googleapis.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://firebasestorage.googleapis.com; frame-src 'self' https://*.firebaseapp.com;
