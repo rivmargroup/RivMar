@@ -20,7 +20,19 @@ auth.onAuthStateChanged(user => {
     const storageRef = storage.ref(userFolder);
     const fileList = document.getElementById("file-list");
 
+    if (!fileList) {
+      console.warn("Elemento con ID 'file-list' no encontrado.");
+      return;
+    }
+
+    console.log("UID autenticado:", uid);
+    console.log("Buscando archivos en:", userFolder);
+
     storageRef.listAll().then(res => {
+      if (res.items.length === 0) {
+        fileList.innerHTML = "<p>No hay archivos disponibles.</p>";
+      }
+
       res.items.forEach(itemRef => {
         itemRef.getDownloadURL().then(url => {
           const fileName = itemRef.name;
@@ -45,6 +57,10 @@ auth.onAuthStateChanged(user => {
           container.appendChild(media);
           container.appendChild(caption);
           fileList.appendChild(container);
+
+          console.log("Archivo cargado:", fileName);
+        }).catch(err => {
+          console.error("Error obteniendo URL de descarga:", err);
         });
       });
     }).catch(err => {
