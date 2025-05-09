@@ -13,6 +13,47 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const storage = firebase.storage();
 
+// Utilidad para cargar y mostrar archivos de una subcarpeta
+function cargarArchivosSubcarpeta(rutaSubcarpeta, contenedorID, tiposPermitidos) {
+  const refCarpeta = storage.ref(rutaSubcarpeta);
+  const contenedor = document.getElementById(contenedorID);
+
+  refCarpeta.listAll().then(res => {
+    if (res.items.length === 0) {
+      contenedor.innerHTML = "<p style='text-align:center;'>No hay archivos.</p>";
+      return;
+    }
+
+    res.items.forEach(itemRef => {
+      itemRef.getDownloadURL().then(url => {
+        const nombreArchivo = itemRef.name.toLowerCase();
+        const extension = nombreArchivo.split('.').pop();
+
+        if (!tiposPermitidos.includes(extension)) return;
+
+        const card = document.createElement("div");
+        card.className = "gallery-item";
+
+        const media = document.createElement(tiposPermitidos.includes('mp4') ? "video" : "img");
+        media.src = url;
+        if (media.tagName === "VIDEO") media.controls = true;
+
+        const label = document.createElement("p");
+        label.className = "file-name";
+        label.textContent = itemRef.name;
+
+        card.appendChild(media);
+        card.appendChild(label);
+        contenedor.appendChild(card);
+      }).catch(err => {
+        console.error("Error obteniendo URL:", err);
+      });
+    });
+  }).catch(err => {
+    console.error("Error listando archivos de la carpeta:", rutaSubcarpeta, err);
+  });
+}
+
 auth.onAuthStateChanged(user => {
   if (!user) {
     window.location.href = "login.html";
@@ -20,73 +61,11 @@ auth.onAuthStateChanged(user => {
   }
 
   const uid = user.uid;
-  const userFolder = `users_${uid}/`;
-  const storageRef = storage.ref(userFolder);
+  document.getElementById("debug-uid").innerText = `UID: ${uid}`;
 
-  const photoList = document.getElementById("photo-list");
-  const videoList = document.getElementById("video-list");
-  const noFiles = document.getElementById("no-files");
-  const debugUID = document.getElementById("debug-uid");
+  // Cargar fotos desde la subcarpeta
+  cargarArchivosSubcarpeta(`users_${uid}/fotos`, "photo-list", ["jpg", "jpeg", "png", "webp"]);
 
-  if (debugUID) {
-    debugUID.textContent = `UID: ${uid}`;
-  }
-
-  if (!photoList || !videoList) {
-    console.warn("Contenedores no encontrados.");
-    return;
-  }
-
-  storageRef.listAll().then(res => {
-    if (res.items.length === 0) {
-      if (noFiles) noFiles.style.display = "block";
-      return;
-    }
-
-    let foundMedia = false;
-
-    res.items.forEach(itemRef => {
-      itemRef.getDownloadURL().then(url => {
-        const fileName = itemRef.name;
-        const ext = fileName.split('.').pop().toLowerCase();
-
-        const isVideo = ['mp4', 'mov', 'webm'].includes(ext);
-        const isImage = ['jpg', 'jpeg', 'png', 'webp'].includes(ext);
-        if (!isVideo && !isImage) return;
-
-        foundMedia = true;
-
-        const container = document.createElement("div");
-        container.classList.add("gallery-item");
-
-        const media = document.createElement(isVideo ? "video" : "img");
-        media.src = url;
-        if (isVideo) media.controls = true;
-
-        const label = document.createElement("p");
-        label.className = "file-name";
-        label.textContent = fileName;
-
-        container.appendChild(media);
-        container.appendChild(label);
-
-        if (isImage) {
-          photoList.appendChild(container);
-        } else {
-          videoList.appendChild(container);
-        }
-
-      }).catch(err => {
-        console.error("Error obteniendo URL del archivo:", err);
-      });
-    });
-
-    if (!foundMedia && noFiles) {
-      noFiles.style.display = "block";
-    }
-
-  }).catch(err => {
-    console.error("Error listando archivos:", err);
-    if (noFiles) noFiles.style.display = "block";
-  });
+  // Cargar videos si en el futuro agregas la carpeta
+  cargarArchivosSubcarpeta(`users_${uid}/videos`, "video-list", ["mp4", "mov", "webm"]);
 });
