@@ -116,7 +116,7 @@
   <section style="padding: 40px;">
     <h2>Mis Fotos y Videos</h2>
     <p id="debug-uid"></p>
-    
+
     <h3 class="subtitulo">Fotos</h3>
     <div id="photo-list" class="gallery"></div>
 
@@ -143,42 +143,64 @@
     const auth = firebase.auth();
     const storage = firebase.storage();
 
+    function cargarArchivosSubcarpeta(rutaSubcarpeta, contenedorID, tiposPermitidos, contador) {
+      const refCarpeta = storage.ref(rutaSubcarpeta);
+      const contenedor = document.getElementById(contenedorID);
+
+      refCarpeta.listAll().then(res => {
+        if (res.items.length === 0 && contador) contador.vacios++;
+
+        res.items.forEach(itemRef => {
+          itemRef.getDownloadURL().then(url => {
+            const nombreArchivo = itemRef.name.toLowerCase();
+            const ext = nombreArchivo.split('.').pop();
+            if (!tiposPermitidos.includes(ext)) return;
+
+            if (contador) contador.contenido = true;
+
+            const card = document.createElement("div");
+            card.className = "gallery-item";
+
+            const media = document.createElement(tiposPermitidos.includes('mp4') ? "video" : "img");
+            media.src = url;
+            if (media.tagName === "VIDEO") media.controls = true;
+
+            const label = document.createElement("p");
+            label.className = "file-name";
+            label.textContent = itemRef.name;
+
+            card.appendChild(media);
+            card.appendChild(label);
+            contenedor.appendChild(card);
+          }).catch(err => {
+            console.error("Error obteniendo URL:", err);
+          });
+        });
+      }).catch(err => {
+        console.error("Error listando archivos de:", rutaSubcarpeta, err);
+        if (contador) contador.vacios++;
+      });
+    }
+
     auth.onAuthStateChanged(user => {
-      if (user) {
-        const uid = user.uid;
-        document.getElementById("debug-uid").innerText = `UID: ${uid}`;
-        const userFolder = `users_${uid}/`;
+      if (!user) {
+        window.location.href = "login.html";
+        return;
+      }
 
-        const photoList = document.getElementById('photo-list');
-        const videoList = document.getElementById('video-list');
-        const noFiles = document.getElementById('no-files');
+      const uid = user.uid;
+      document.getElementById("debug-uid").innerText = `UID: ${uid}`;
+      const contador = { vacios: 0, contenido: false };
 
-        storage.ref(userFolder).listAll().then(result => {
-          if (result.items.length === 0) {
-            noFiles.style.display = 'block';
-            return;
-          }
+      cargarArchivosSubcarpeta(`users_${uid}/fotos`, "photo-list", ["jpg", "jpeg", "png", "webp"], contador);
+      cargarArchivosSubcarpeta(`users_${uid}/videos`, "video-list", ["mp4", "mov", "webm"], contador);
 
-          let hasMedia = false;
-
-          result.items.forEach(fileRef => {
-            fileRef.getDownloadURL().then(url => {
-              const fileName = fileRef.name.toLowerCase();
-              const ext = fileName.split('.').pop();
-              const isVideo = ['mp4', 'mov', 'webm'].includes(ext);
-              const isImage = ['jpg', 'jpeg', 'png', 'webp'].includes(ext);
-
-              if (!isVideo && !isImage) return;
-
-              hasMedia = true;
-
-              const container = document.createElement('div');
-              container.classList.add('gallery-item');
-
-              const media = document.createElement(isVideo ? 'video' : 'img');
-              media.src = url;
-              if (isVideo) media.controls = true;
-
-              const label = document.createElement('p');
-              label.className = 'file-name';
-              label.textContent
+      setTimeout(() => {
+        if (!contador.contenido) {
+          document.getElementById("no-files").style.display = "block";
+        }
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
