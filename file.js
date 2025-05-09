@@ -8,6 +8,7 @@ const firebaseConfig = {
   appId: "1:631400927733:web:aab935d3fafb07e07490bc"
 };
 
+// Inicializa Firebase
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const storage = firebase.storage();
@@ -15,33 +16,39 @@ const storage = firebase.storage();
 auth.onAuthStateChanged(user => {
   if (user) {
     const uid = user.uid;
-    const userFolder = `users_${uid}/`; // correcta estructura de carpeta
-
+    const userFolder = `users_${uid}/`; // carpeta personalizada por UID
     const storageRef = storage.ref(userFolder);
+    const fileList = document.getElementById("file-list");
 
-    storageRef.listAll().then((res) => {
-      const fileList = document.getElementById("file-list");
-
-      res.items.forEach((itemRef) => {
+    storageRef.listAll().then(res => {
+      res.items.forEach(itemRef => {
         itemRef.getDownloadURL().then(url => {
-          const ext = itemRef.name.split('.').pop().toLowerCase();
+          const fileName = itemRef.name;
+          const ext = fileName.split('.').pop().toLowerCase();
           const isVideo = ['mp4', 'mov', 'webm'].includes(ext);
 
           const container = document.createElement('div');
           container.classList.add('file-item');
 
-          const element = document.createElement(isVideo ? 'video' : 'img');
-          element.src = url;
-          element.controls = isVideo;
-          element.width = 300;
-          element.style.margin = '10px';
+          const media = document.createElement(isVideo ? 'video' : 'img');
+          media.src = url;
+          if (isVideo) media.controls = true;
+          media.style.width = '100%';
+          media.style.borderRadius = '8px';
 
-          container.appendChild(element);
+          const caption = document.createElement('p');
+          caption.textContent = fileName;
+          caption.style.marginTop = '8px';
+          caption.style.fontSize = '14px';
+          caption.style.color = '#333';
+
+          container.appendChild(media);
+          container.appendChild(caption);
           fileList.appendChild(container);
         });
       });
-    }).catch(error => {
-      console.error("Error listando archivos:", error);
+    }).catch(err => {
+      console.error("Error al listar archivos:", err);
     });
   } else {
     window.location.href = "login.html";
