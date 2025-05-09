@@ -99,6 +99,52 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
-  <script src="files.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
+      authDomain: "rivmar-clientes.firebaseapp.com",
+      projectId: "rivmar-clientes",
+      storageBucket: "rivmar-clientes.appspot.com",
+      messagingSenderId: "631400927733",
+      appId: "1:631400927733:web:aab935d3fafb07e07490bc"
+    };
+    firebase.initializeApp(firebaseConfig);
+
+    const auth = firebase.auth();
+    const storage = firebase.storage();
+
+    auth.onAuthStateChanged(user => {
+      if (user) {
+        const uid = user.uid;
+        const fileList = document.getElementById('file-list');
+        const userFolder = `users/${uid}/`; // Folder by UID
+
+        storage.ref(userFolder).listAll().then(result => {
+          result.items.forEach(fileRef => {
+            fileRef.getDownloadURL().then(url => {
+              const fileName = fileRef.name.toLowerCase();
+              const container = document.createElement('div');
+              container.classList.add('file-item');
+
+              if (fileName.endsWith('.jpg') || fileName.endsWith('.png') || fileName.endsWith('.jpeg')) {
+                const img = document.createElement('img');
+                img.src = url;
+                container.appendChild(img);
+              } else if (fileName.endsWith('.mp4') || fileName.endsWith('.mov') || fileName.endsWith('.webm')) {
+                const video = document.createElement('video');
+                video.src = url;
+                video.controls = true;
+                container.appendChild(video);
+              }
+
+              fileList.appendChild(container);
+            });
+          });
+        });
+      } else {
+        window.location.href = "login.html";
+      }
+    });
+  </script>
 </body>
 </html>
