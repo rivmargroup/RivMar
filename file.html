@@ -48,8 +48,21 @@
     h2 {
       color: #003049;
       font-size: 28px;
-      margin-bottom: 20px;
+      margin-bottom: 10px;
       text-align: center;
+    }
+
+    #debug-uid {
+      text-align: center;
+      font-size: 14px;
+      color: gray;
+      margin-bottom: 20px;
+    }
+
+    .loading {
+      text-align: center;
+      font-style: italic;
+      margin-bottom: 20px;
     }
 
     .card-container {
@@ -75,6 +88,12 @@
       border-radius: 8px;
       margin-bottom: 10px;
     }
+
+    .file-name {
+      font-size: 14px;
+      color: #333;
+      margin-top: 8px;
+    }
   </style>
 </head>
 <body>
@@ -93,7 +112,10 @@
 
   <section style="padding: 40px;">
     <h2>Mis Fotos y Videos</h2>
+    <p id="debug-uid"></p>
+    <div id="loading" class="loading">Cargando archivos...</div>
     <div id="file-list" class="card-container"></div>
+    <p id="no-files" style="text-align:center; display:none; color:gray;">No hay archivos para mostrar.</p>
   </section>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -116,10 +138,19 @@
     auth.onAuthStateChanged(user => {
       if (user) {
         const uid = user.uid;
+        document.getElementById("debug-uid").innerText = `UID: ${uid}`;
         const userFolder = `users_${uid}/`;
         const fileList = document.getElementById('file-list');
+        const loading = document.getElementById('loading');
+        const noFiles = document.getElementById('no-files');
 
         storage.ref(userFolder).listAll().then(result => {
+          loading.style.display = 'none';
+
+          if (result.items.length === 0) {
+            noFiles.style.display = 'block';
+          }
+
           result.items.forEach(fileRef => {
             fileRef.getDownloadURL().then(url => {
               const fileName = fileRef.name.toLowerCase();
@@ -137,10 +168,16 @@
                 container.appendChild(video);
               }
 
+              const label = document.createElement('p');
+              label.className = 'file-name';
+              label.textContent = fileRef.name;
+              container.appendChild(label);
+
               fileList.appendChild(container);
             });
           });
         }).catch(error => {
+          loading.textContent = "Error cargando archivos.";
           console.error("Error listando archivos:", error);
         });
       } else {
