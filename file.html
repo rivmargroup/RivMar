@@ -59,6 +59,14 @@
       color: #002f4b;
     }
 
+    .vacio-texto {
+      text-align: center;
+      font-style: italic;
+      color: #666;
+      font-size: 15px;
+      margin-top: 10px;
+    }
+
     #debug-uid {
       text-align: center;
       font-size: 14px;
@@ -118,12 +126,12 @@
     <p id="debug-uid"></p>
 
     <h3 class="subtitulo">Fotos</h3>
+    <p id="fotos-vacio" class="vacio-texto" style="display:none;">No hay fotos disponibles.</p>
     <div id="photo-list" class="gallery"></div>
 
     <h3 class="subtitulo">Videos</h3>
+    <p id="videos-vacio" class="vacio-texto" style="display:none;">No hay videos disponibles.</p>
     <div id="video-list" class="gallery"></div>
-
-    <p id="no-files" style="text-align:center; display:none; color:gray;">No hay archivos para mostrar.</p>
   </section>
 
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
@@ -143,12 +151,17 @@
     const auth = firebase.auth();
     const storage = firebase.storage();
 
-    function cargarArchivosSubcarpeta(rutaSubcarpeta, contenedorID, tiposPermitidos, contador) {
+    function cargarArchivosSubcarpeta(rutaSubcarpeta, contenedorID, tiposPermitidos, vacioID) {
       const refCarpeta = storage.ref(rutaSubcarpeta);
       const contenedor = document.getElementById(contenedorID);
+      const vacioTexto = document.getElementById(vacioID);
+      let hayContenido = false;
 
       refCarpeta.listAll().then(res => {
-        if (res.items.length === 0 && contador) contador.vacios++;
+        if (res.items.length === 0) {
+          vacioTexto.style.display = "block";
+          return;
+        }
 
         res.items.forEach(itemRef => {
           itemRef.getDownloadURL().then(url => {
@@ -156,7 +169,8 @@
             const ext = nombreArchivo.split('.').pop();
             if (!tiposPermitidos.includes(ext)) return;
 
-            if (contador) contador.contenido = true;
+            hayContenido = true;
+            vacioTexto.style.display = "none";
 
             const card = document.createElement("div");
             card.className = "gallery-item";
@@ -173,12 +187,16 @@
             card.appendChild(label);
             contenedor.appendChild(card);
           }).catch(err => {
-            console.error("Error obteniendo URL:", err);
+            console.error("Error al obtener archivo:", err);
           });
         });
+
+        if (!hayContenido) {
+          vacioTexto.style.display = "block";
+        }
       }).catch(err => {
-        console.error("Error listando archivos de:", rutaSubcarpeta, err);
-        if (contador) contador.vacios++;
+        console.error("Error al listar archivos:", err);
+        vacioTexto.style.display = "block";
       });
     }
 
@@ -190,16 +208,9 @@
 
       const uid = user.uid;
       document.getElementById("debug-uid").innerText = `UID: ${uid}`;
-      const contador = { vacios: 0, contenido: false };
 
-      cargarArchivosSubcarpeta(`users_${uid}/fotos`, "photo-list", ["jpg", "jpeg", "png", "webp"], contador);
-      cargarArchivosSubcarpeta(`users_${uid}/videos`, "video-list", ["mp4", "mov", "webm"], contador);
-
-      setTimeout(() => {
-        if (!contador.contenido) {
-          document.getElementById("no-files").style.display = "block";
-        }
-      }, 1500);
+      cargarArchivosSubcarpeta(`users_${uid}/fotos`, "photo-list", ["jpg", "jpeg", "png", "webp"], "fotos-vacio");
+      cargarArchivosSubcarpeta(`users_${uid}/videos`, "video-list", ["mp4", "mov", "webm"], "videos-vacio");
     });
   </script>
 </body>
