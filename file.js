@@ -14,59 +14,79 @@ const auth = firebase.auth();
 const storage = firebase.storage();
 
 auth.onAuthStateChanged(user => {
-  if (user) {
-    const uid = user.uid;
-    const userFolder = `users_${uid}/`; // carpeta personalizada por UID
-    const storageRef = storage.ref(userFolder);
-    const fileList = document.getElementById("file-list");
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
 
-    if (!fileList) {
-      console.warn("Elemento con ID 'file-list' no encontrado.");
+  const uid = user.uid;
+  const userFolder = `users_${uid}/`;
+  const storageRef = storage.ref(userFolder);
+
+  const photoList = document.getElementById("photo-list");
+  const videoList = document.getElementById("video-list");
+  const noFiles = document.getElementById("no-files");
+  const debugUID = document.getElementById("debug-uid");
+
+  if (debugUID) {
+    debugUID.textContent = `UID: ${uid}`;
+  }
+
+  if (!photoList || !videoList) {
+    console.warn("Contenedores no encontrados.");
+    return;
+  }
+
+  storageRef.listAll().then(res => {
+    if (res.items.length === 0) {
+      if (noFiles) noFiles.style.display = "block";
       return;
     }
 
-    console.log("UID autenticado:", uid);
-    console.log("Buscando archivos en:", userFolder);
+    let foundMedia = false;
 
-    storageRef.listAll().then(res => {
-      if (res.items.length === 0) {
-        fileList.innerHTML = "<p>No hay archivos disponibles.</p>";
-      }
+    res.items.forEach(itemRef => {
+      itemRef.getDownloadURL().then(url => {
+        const fileName = itemRef.name;
+        const ext = fileName.split('.').pop().toLowerCase();
 
-      res.items.forEach(itemRef => {
-        itemRef.getDownloadURL().then(url => {
-          const fileName = itemRef.name;
-          const ext = fileName.split('.').pop().toLowerCase();
-          const isVideo = ['mp4', 'mov', 'webm'].includes(ext);
+        const isVideo = ['mp4', 'mov', 'webm'].includes(ext);
+        const isImage = ['jpg', 'jpeg', 'png', 'webp'].includes(ext);
+        if (!isVideo && !isImage) return;
 
-          const container = document.createElement('div');
-          container.classList.add('file-item');
+        foundMedia = true;
 
-          const media = document.createElement(isVideo ? 'video' : 'img');
-          media.src = url;
-          if (isVideo) media.controls = true;
-          media.style.width = '100%';
-          media.style.borderRadius = '8px';
+        const container = document.createElement("div");
+        container.classList.add("gallery-item");
 
-          const caption = document.createElement('p');
-          caption.textContent = fileName;
-          caption.style.marginTop = '8px';
-          caption.style.fontSize = '14px';
-          caption.style.color = '#333';
+        const media = document.createElement(isVideo ? "video" : "img");
+        media.src = url;
+        if (isVideo) media.controls = true;
 
-          container.appendChild(media);
-          container.appendChild(caption);
-          fileList.appendChild(container);
+        const label = document.createElement("p");
+        label.className = "file-name";
+        label.textContent = fileName;
 
-          console.log("Archivo cargado:", fileName);
-        }).catch(err => {
-          console.error("Error obteniendo URL de descarga:", err);
-        });
+        container.appendChild(media);
+        container.appendChild(label);
+
+        if (isImage) {
+          photoList.appendChild(container);
+        } else {
+          videoList.appendChild(container);
+        }
+
+      }).catch(err => {
+        console.error("Error obteniendo URL del archivo:", err);
       });
-    }).catch(err => {
-      console.error("Error al listar archivos:", err);
     });
-  } else {
-    window.location.href = "login.html";
-  }
+
+    if (!foundMedia && noFiles) {
+      noFiles.style.display = "block";
+    }
+
+  }).catch(err => {
+    console.error("Error listando archivos:", err);
+    if (noFiles) noFiles.style.display = "block";
+  });
 });
