@@ -75,12 +75,6 @@
       border-radius: 8px;
       margin-bottom: 10px;
     }
-
-    .file-item p {
-      font-size: 14px;
-      color: #333;
-      word-break: break-word;
-    }
   </style>
 </head>
 <body>
@@ -102,7 +96,6 @@
     <div id="file-list" class="card-container"></div>
   </section>
 
-  <!-- Firebase Scripts -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
@@ -123,35 +116,33 @@
     auth.onAuthStateChanged(user => {
       if (user) {
         const uid = user.uid;
-        const folder = `users_${uid}/`; // folder based on UID
-        const fileList = document.getElementById("file-list");
+        const userFolder = `users_${uid}/`;
+        const fileList = document.getElementById('file-list');
 
-        storage.ref(folder).listAll().then(res => {
-          res.items.forEach(itemRef => {
-            itemRef.getDownloadURL().then(url => {
-              const fileName = itemRef.name;
-              const ext = fileName.split('.').pop().toLowerCase();
-              const card = document.createElement('div');
-              card.className = 'file-item';
+        storage.ref(userFolder).listAll().then(result => {
+          result.items.forEach(fileRef => {
+            fileRef.getDownloadURL().then(url => {
+              const fileName = fileRef.name.toLowerCase();
+              const container = document.createElement('div');
+              container.classList.add('file-item');
 
-              if (['jpg', 'jpeg', 'png'].includes(ext)) {
+              if (fileName.endsWith('.jpg') || fileName.endsWith('.jpeg') || fileName.endsWith('.png')) {
                 const img = document.createElement('img');
                 img.src = url;
-                card.appendChild(img);
-              } else if (['mp4', 'mov', 'webm'].includes(ext)) {
+                container.appendChild(img);
+              } else if (fileName.endsWith('.mp4') || fileName.endsWith('.mov') || fileName.endsWith('.webm')) {
                 const video = document.createElement('video');
                 video.src = url;
                 video.controls = true;
-                card.appendChild(video);
+                container.appendChild(video);
               }
 
-              const label = document.createElement('p');
-              label.textContent = fileName;
-              card.appendChild(label);
-              fileList.appendChild(card);
+              fileList.appendChild(container);
             });
           });
-        }).catch(err => console.error("Error al listar archivos:", err));
+        }).catch(error => {
+          console.error("Error listando archivos:", error);
+        });
       } else {
         window.location.href = "login.html";
       }
