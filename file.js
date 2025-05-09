@@ -12,45 +12,32 @@ firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const storage = firebase.storage();
 
-document.addEventListener("DOMContentLoaded", () => {
-  auth.onAuthStateChanged(async (user) => {
-    if (!user) return window.location.href = "login.html";
+auth.onAuthStateChanged(user => {
+  if (user) {
+    const uid = user.uid;
+    const userFolder = `clientes/${uid}/`; // estructura de carpetas por usuario
 
-    const gallery = document.getElementById("file-gallery");
-    const folder = `clients/${user.uid}/`;
+    const storageRef = storage.ref(userFolder);
 
-    try {
-      const listRef = storage.ref().child(folder);
-      const result = await listRef.listAll();
+    storageRef.listAll().then((res) => {
+      const fileList = document.getElementById("file-list");
+      res.items.forEach((itemRef) => {
+        itemRef.getDownloadURL().then(url => {
+          const ext = itemRef.name.split('.').pop().toLowerCase();
+          const isVideo = ['mp4', 'mov', 'webm'].includes(ext);
 
-      if (result.items.length === 0) {
-        gallery.innerHTML = "<p>No files found.</p>";
-        return;
-      }
-
-      for (const itemRef of result.items) {
-        const url = await itemRef.getDownloadURL();
-        const fileName = itemRef.name.toLowerCase();
-
-        const div = document.createElement("div");
-        div.className = "gallery-item";
-
-        if (fileName.endsWith(".jpg") || fileName.endsWith(".png")) {
-          const img = document.createElement("img");
-          img.src = url;
-          div.appendChild(img);
-        } else if (fileName.endsWith(".mp4")) {
-          const video = document.createElement("video");
-          video.src = url;
-          video.controls = true;
-          div.appendChild(video);
-        }
-
-        gallery.appendChild(div);
-      }
-    } catch (err) {
-      gallery.innerHTML = "<p>Error loading files.</p>";
-      console.error(err);
-    }
-  });
+          const element = document.createElement(isVideo ? 'video' : 'img');
+          element.src = url;
+          element.controls = isVideo;
+          element.width = 300;
+          element.style.margin = '10px';
+          fileList.appendChild(element);
+        });
+      });
+    }).catch(error => {
+      console.error("Error listando archivos:", error);
+    });
+  } else {
+    window.location.href = "login.html";
+  }
 });
