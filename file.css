@@ -55,3 +55,25 @@ main {
   object-fit: cover;
   border-radius: 8px;
 }
+
+h2, h3 {
+  text-align: center;
+  color: #002f4b;
+  margin-bottom: 10px;
+}
+
+.vacio-texto {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+  font-size: 15px;
+  margin-top: 10px;
+}
+
+.file-name {
+  font-size: 14px;
+  color: #333;
+  margin-top: 8px;
+  text-align: center;
+}
+
