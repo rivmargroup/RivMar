@@ -164,10 +164,8 @@
   </style>
 </head>
 <body>
-
-  <!-- Header -->
   <header>
-    <img src="assets/logo blanco.png" alt="RivMar Logo" class="logo">
+    <img src="assets/logo-blanco.webp" alt="RivMar Logo" class="logo" width="180" height="60" loading="eager">
     <button class="menu-toggle" id="menu-toggle">☰</button>
     <nav>
       <ul id="menu">
@@ -181,38 +179,35 @@
     </nav>
   </header>
 
-  <!-- Hero -->
   <section class="hero">
-    <img src="assets/banner.png" alt="Hero Image" class="hero-img">
+    <img src="assets/banner-1200.webp" alt="Hero Image" class="hero-img" loading="eager" width="1200" height="400" srcset="assets/banner-600.webp 600w, assets/banner-1200.webp 1200w" sizes="(max-width: 768px) 100vw, 1200px">
     <div class="hero-text">
       <h1>Next-Gen Robotic Boat Hull Cleaning</h1>
       <p>Efficient. Safe. Documented. Serving Miami, FL.</p>
     </div>
   </section>
 
-  <!-- Services -->
   <section id="services">
     <h2>Our Services</h2>
     <div class="card-container">
       <div class="card">
-        <img src="assets/inspection-icon.png" alt="Inspection">
+        <img src="assets/inspection-icon-60.webp" alt="Inspection" width="60" height="60" loading="lazy">
         <h3>Inspection</h3>
         <p>Hull Inspection with Photos</p>
       </div>
       <div class="card">
-        <img src="assets/cleaning-icon.png" alt="Cleaning">
+        <img src="assets/cleaning-icon-60.webp" alt="Cleaning" width="60" height="60" loading="lazy">
         <h3>Robotic Hull Cleaning</h3>
         <p>Efficient and safe underwater cleaning</p>
       </div>
       <div class="card">
-        <img src="assets/video-icon.png" alt="Video">
+        <img src="assets/video-icon-60.webp" alt="Video" width="60" height="60" loading="lazy">
         <h3>Video Reports</h3>
         <p>Before/After HD Video Documentation</p>
       </div>
     </div>
   </section>
 
-  <!-- Pricing -->
   <section id="pricing">
     <h2>Pricing</h2>
     <div class="card-container">
@@ -234,28 +229,24 @@
     </div>
   </section>
 
-  <!-- Fleet -->
   <section id="fleet">
     <h2>Our Fleet</h2>
     <div class="fleet-images">
-      <img src="assets/robot.png" alt="Robot">
-      <img src="assets/van.png" alt="RivMar Van">
+      <img src="assets/robot-300.webp" alt="Robot" width="300" height="200" loading="lazy">
+      <img src="assets/van-300.webp" alt="RivMar Van" width="300" height="200" loading="lazy">
     </div>
   </section>
 
-  <!-- Contact -->
   <section id="contact">
     <h2>Contact Us</h2>
     <p>Email: <a href="mailto:rivmargroup@gmail.com">rivmargroup@gmail.com</a></p>
     <p>Phone: <a href="tel:+17863669294">(786) 366-9294</a></p>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2025 RivMar Group. All rights reserved.</p>
   </footer>
 
-  <!-- Firebase + Responsive Nav Logic -->
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script>
@@ -285,7 +276,6 @@
       }
     });
 
-    // Menu toggle for mobile
     const toggleBtn = document.getElementById("menu-toggle");
     const menu = document.getElementById("menu");
     toggleBtn.addEventListener("click", () => {
