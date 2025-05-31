@@ -300,11 +300,14 @@
     <p>Email: <a href="mailto:info@rivmargroup.com">info@rivmargroup.com</a></p>
     <p>Phone: <a href="tel:+18663506338">(866) 350-6338</a></p>
 
-    <form action="mailto:info@rivmargroup.com" method="post" enctype="text/plain">
+    <form action="https://formsubmit.co/info@rivmargroup.com" method="POST">
+      <input type="hidden" name="_captcha" value="false">
+      <!-- <input type="hidden" name="_next" value="https://www.rivmargroup.com/thanks.html"> -->
+
       <input type="text" name="Name" placeholder="Your Full Name" required>
       <input type="email" name="Email" placeholder="Your Email Address" required>
       <input type="text" name="BoatSize" placeholder="Boat Length (ft)" required>
-      <select name="Service">
+      <select name="Service" required>
         <option value="" disabled selected>Select Service</option>
         <option value="Inspection">Inspection</option>
         <option value="Robotic Hull Cleaning">Robotic Hull Cleaning</option>
