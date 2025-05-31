@@ -229,15 +229,12 @@
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a href="#contact">Get a Quote</a></li>
-        <li id="login-link"><a href="login.html">Login</a></li>
-        <li id="signup-link"><a href="register.html">Sign up</a></li>
-        <li id="profile-link" style="display:none;"><a href="profile.html">Profile</a></li>
       </ul>
     </nav>
   </header>
 
   <section class="hero">
-    <img src="assets/banner.webp" alt="Underwater robot cleaning a yacht hull" class="hero-img" loading="eager" width="1200" height="400">
+    <img src="assets/banner.webp" alt="Underwater robot cleaning a yacht hull" class="hero-img" loading="eager">
     <div class="hero-text">
       <h1>Next-Gen Robotic Boat Hull Cleaning</h1>
       <p>Efficient. Safe. Documented. Serving Miami, FL.</p>
@@ -302,8 +299,6 @@
 
     <form action="https://formsubmit.co/info@rivmargroup.com" method="POST">
       <input type="hidden" name="_captcha" value="false">
-      <!-- <input type="hidden" name="_next" value="https://www.rivmargroup.com/thanks.html"> -->
-
       <input type="text" name="Name" placeholder="Your Full Name" required>
       <input type="email" name="Email" placeholder="Your Email Address" required>
       <input type="text" name="BoatSize" placeholder="Boat Length (ft)" required>
@@ -322,35 +317,7 @@
     <p>© 2025 RivMar Group. All rights reserved.</p>
   </footer>
 
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
-      authDomain: "rivmar-clientes.firebaseapp.com",
-      projectId: "rivmar-clientes",
-      storageBucket: "rivmar-clientes.appspot.com",
-      messagingSenderId: "631400927733",
-      appId: "1:631400927733:web:aab935d3fafb07e07490bc"
-    };
-    firebase.initializeApp(firebaseConfig);
-
-    firebase.auth().onAuthStateChanged(user => {
-      const login = document.getElementById("login-link");
-      const signup = document.getElementById("signup-link");
-      const profile = document.getElementById("profile-link");
-
-      if (user) {
-        login.style.display = "none";
-        signup.style.display = "none";
-        profile.style.display = "inline";
-      } else {
-        login.style.display = "inline";
-        signup.style.display = "inline";
-        profile.style.display = "none";
-      }
-    });
-
     const toggleBtn = document.getElementById("menu-toggle");
     const menu = document.getElementById("menu");
     toggleBtn.addEventListener("click", () => {
