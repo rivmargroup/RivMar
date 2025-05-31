@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RivMar Group</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RivMar Group offers next-gen robotic boat hull cleaning in Miami, FL. Efficient, safe, and fully documented. Book your inspection today!" />
+  <meta name="keywords" content="boat hull cleaning, robotic hull cleaning, yacht cleaning Miami, underwater cleaning, marine services Florida" />
+  <meta name="author" content="RivMar Group" />
+  <title>RivMar Group | Robotic Boat Hull Cleaning in Miami</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
     * {
       box-sizing: border-box;
@@ -50,6 +53,13 @@
       color: #fff;
       text-decoration: none;
       font-weight: 600;
+    }
+
+    nav ul li a[href="#contact"] {
+      background-color: #00aaff;
+      padding: 6px 12px;
+      border-radius: 6px;
+      color: white;
     }
 
     .menu-toggle {
@@ -103,6 +113,17 @@
       background: rgba(0, 0, 0, 0.4);
       padding: 20px 30px;
       border-radius: 12px;
+    }
+
+    .hero-text a {
+      display: inline-block;
+      margin-top: 15px;
+      background-color: #00aaff;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
     }
 
     h1, h2 {
@@ -163,17 +184,51 @@
       color: #004c9a;
       text-decoration: none;
     }
+
+    form {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    input, select, textarea {
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      width: 100%;
+    }
+
+    button[type="submit"] {
+      background-color: #002f4b;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #00557a;
+    }
   </style>
 </head>
 <body>
   <header>
-    <img src="assets/logoblanco.webp" alt="RivMar Logo" class="logo" width="180" height="60" loading="eager">
+    <img src="assets/logoblanco.webp" alt="RivMar Group Logo" class="logo" width="180" height="60" loading="eager">
     <button class="menu-toggle" id="menu-toggle">☰</button>
     <nav>
       <ul id="menu">
         <li><a href="#services">Services</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#contact">Contact</a></li>
+        <li><a href="#contact">Get a Quote</a></li>
         <li id="login-link"><a href="login.html">Login</a></li>
         <li id="signup-link"><a href="register.html">Sign up</a></li>
         <li id="profile-link" style="display:none;"><a href="profile.html">Profile</a></li>
@@ -182,10 +237,11 @@
   </header>
 
   <section class="hero">
-    <img src="assets/banner.webp" alt="Hero Image" class="hero-img" loading="eager" width="1200" height="400">
+    <img src="assets/banner.webp" alt="Underwater robot cleaning a yacht hull" class="hero-img" loading="eager" width="1200" height="400">
     <div class="hero-text">
       <h1>Next-Gen Robotic Boat Hull Cleaning</h1>
       <p>Efficient. Safe. Documented. Serving Miami, FL.</p>
+      <a href="#contact">Get a Quote</a>
     </div>
   </section>
 
@@ -193,17 +249,17 @@
     <h2>Our Services</h2>
     <div class="card-container">
       <div class="card">
-        <img src="assets/inspection-icon.webp" alt="Inspection" width="60" height="60" loading="lazy">
+        <img src="assets/inspection-icon.webp" alt="Hull inspection icon" loading="lazy">
         <h3>Inspection</h3>
         <p>Hull Inspection with Photos</p>
       </div>
       <div class="card">
-        <img src="assets/cleaning-icon.webp" alt="Cleaning" width="60" height="60" loading="lazy">
+        <img src="assets/cleaning-icon.webp" alt="Robotic cleaning icon" loading="lazy">
         <h3>Robotic Hull Cleaning</h3>
         <p>Efficient and safe underwater cleaning</p>
       </div>
       <div class="card">
-        <img src="assets/video-icon.webp" alt="Video" width="60" height="60" loading="lazy">
+        <img src="assets/video-icon.webp" alt="Video report icon" loading="lazy">
         <h3>Video Reports</h3>
         <p>Before/After HD Video Documentation</p>
       </div>
@@ -234,15 +290,29 @@
   <section id="fleet">
     <h2>Our Fleet</h2>
     <div class="fleet-images">
-      <img src="assets/robot.webp" alt="Robot" width="300" height="200" loading="lazy">
-      <img src="assets/van.webp" alt="RivMar Van" width="300" height="200" loading="lazy">
+      <img src="assets/robot.webp" alt="RivMar underwater cleaning robot" loading="lazy">
+      <img src="assets/van.webp" alt="RivMar service van" loading="lazy">
     </div>
   </section>
 
   <section id="contact">
     <h2>Contact Us</h2>
     <p>Email: <a href="mailto:info@rivmargroup.com">info@rivmargroup.com</a></p>
-    <p>Phone: <a href="tel:+17863669294">(866)350-6338 </a></p>
+    <p>Phone: <a href="tel:+18663506338">(866) 350-6338</a></p>
+
+    <form action="mailto:info@rivmargroup.com" method="post" enctype="text/plain">
+      <input type="text" name="Name" placeholder="Your Full Name" required>
+      <input type="email" name="Email" placeholder="Your Email Address" required>
+      <input type="text" name="BoatSize" placeholder="Boat Length (ft)" required>
+      <select name="Service">
+        <option value="" disabled selected>Select Service</option>
+        <option value="Inspection">Inspection</option>
+        <option value="Robotic Hull Cleaning">Robotic Hull Cleaning</option>
+        <option value="Video Report">Video Report</option>
+      </select>
+      <textarea name="Message" rows="4" placeholder="Additional details..."></textarea>
+      <button type="submit">Submit Quote Request</button>
+    </form>
   </section>
 
   <footer>
