@@ -8,27 +8,27 @@
   </url>
 
   <url>
-    <loc>https://rivmargroup.com/#services</loc>
-    <lastmod>2025-05-31</lastmod>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://rivmargroup.com/#pricing</loc>
-    <lastmod>2025-05-31</lastmod>
-    <priority>0.80</priority>
-  </url>
-
-  <url>
-    <loc>https://rivmargroup.com/#contact</loc>
-    <lastmod>2025-05-31</lastmod>
-    <priority>0.90</priority>
-  </url>
-
-  <url>
     <loc>https://rivmargroup.com/login.html</loc>
     <lastmod>2025-05-31</lastmod>
-    <priority>0.50</priority>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://rivmargroup.com/register.html</loc>
+    <lastmod>2025-05-31</lastmod>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://rivmargroup.com/profile.html</loc>
+    <lastmod>2025-05-31</lastmod>
+    <priority>0.60</priority>
+  </url>
+
+  <url>
+    <loc>https://rivmargroup.com/thankyou.html</loc>
+    <lastmod>2025-05-31</lastmod>
+    <priority>0.30</priority>
   </url>
 
 </urlset>
