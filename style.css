@@ -60,7 +60,9 @@ nav ul li a {
   background: none;
   border: none;
   cursor: pointer;
+  margin-left: auto; /* 👈 Empuja el ícono totalmente a la derecha */
 }
+
 
 @media (max-width: 768px) {
   nav ul {
