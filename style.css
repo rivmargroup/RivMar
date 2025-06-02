@@ -73,17 +73,17 @@ nav ul li a {
     height: 100vh;
     display: none;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 24px;
-    padding: 80px 40px; /* ← Este es el ajuste clave */
+    padding: 80px 60;
     z-index: 999;
   }
 
   nav ul li a {
     font-size: 20px;
     color: #fff;
-    font-weight: bold;
     text-decoration: none;
+    font-weight: bold;
   }
 
   nav ul.active {
@@ -99,6 +99,7 @@ nav ul li a {
     z-index: 1000;
   }
 }
+
 
 
 
