@@ -24,12 +24,21 @@ document.addEventListener("DOMContentLoaded", () => {
     alert("Logging in...");
   });
 
-  // 👉 Código del ícono del menú
+  // Menú hamburguesa
   const menuToggle = document.getElementById("menu-toggle");
   const navMenu = document.getElementById("menu");
 
   menuToggle.addEventListener("click", () => {
     navMenu.classList.toggle("active");
     menuToggle.textContent = navMenu.classList.contains("active") ? "✖" : "☰";
+  });
+
+  // 🔄 Cerrar menú cuando se hace clic en un enlace
+  const menuLinks = navMenu.querySelectorAll("a");
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      navMenu.classList.remove("active");
+      menuToggle.textContent = "☰";
+    });
   });
 });
