@@ -118,16 +118,19 @@ nav ul li a {
 
 .hero-text {
   position: absolute;
-  bottom: 40px;
+  top: 50%;
   left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0,0,0,0.6);
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.4);
   color: #fff;
-  padding: 20px 30px;
+  padding: 20px;
   border-radius: 12px;
   text-align: center;
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
+  width: 90%;        /* 👈 asegura margen horizontal */
+  max-width: 500px;  /* 👈 evita que sea demasiado ancho en desktop */
 }
+
 
 .hero-text a {
   display: inline-block;
@@ -138,7 +141,9 @@ nav ul li a {
   border-radius: 8px;
   font-weight: 600;
   text-decoration: none;
+  width: fit-content;
 }
+
 
 /* Auth Pages */
 .auth-page {
