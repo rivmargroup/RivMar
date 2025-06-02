@@ -75,7 +75,7 @@ nav ul li a {
     justify-content: center;
     align-items: center;
     gap: 24px;
-    padding: 80px 60;
+    padding: 60px 80px 60;
     z-index: 999;
   }
 
