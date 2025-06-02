@@ -193,36 +193,47 @@
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
   <script>
-    const firebaseConfig = {
-      apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
-      authDomain: "rivmar-clientes.firebaseapp.com",
-      projectId: "rivmar-clientes",
-      storageBucket: "rivmar-clientes.appspot.com",
-      messagingSenderId: "631400927733",
-      appId: "1:631400927733:web:aab935d3fafb07e07490bc"
-    };
-    firebase.initializeApp(firebaseConfig);
+  const firebaseConfig = {
+    apiKey: "AIzaSyALCBhybMXTS_SPzCQ13YEkWBwvPv-_QZY",
+    authDomain: "rivmar-clientes.firebaseapp.com",
+    projectId: "rivmar-clientes",
+    storageBucket: "rivmar-clientes.appspot.com",
+    messagingSenderId: "631400927733",
+    appId: "1:631400927733:web:aab935d3fafb07e07490bc"
+  };
+  firebase.initializeApp(firebaseConfig);
 
-    firebase.auth().onAuthStateChanged(user => {
-      const login = document.getElementById("login-link");
-      const signup = document.getElementById("signup-link");
-      const profile = document.getElementById("profile-link");
-      if (user) {
-        login.style.display = "none";
-        signup.style.display = "none";
-        profile.style.display = "inline";
-      } else {
-        login.style.display = "inline";
-        signup.style.display = "inline";
-        profile.style.display = "none";
-      }
-    });
+  firebase.auth().onAuthStateChanged(user => {
+    const login = document.getElementById("login-link");
+    const signup = document.getElementById("signup-link");
+    const profile = document.getElementById("profile-link");
+    if (user) {
+      login.style.display = "none";
+      signup.style.display = "none";
+      profile.style.display = "inline";
+    } else {
+      login.style.display = "inline";
+      signup.style.display = "inline";
+      profile.style.display = "none";
+    }
+  });
 
-    const toggleBtn = document.getElementById("menu-toggle");
-    const menu = document.getElementById("menu");
-    toggleBtn.addEventListener("click", () => {
-      menu.classList.toggle("active");
+  const toggleBtn = document.getElementById("menu-toggle");
+  const menu = document.getElementById("menu");
+
+  toggleBtn.addEventListener("click", () => {
+    menu.classList.toggle("active");
+    toggleBtn.textContent = menu.classList.contains("active") ? "✖" : "☰";
+  });
+
+  // Cerrar menú cuando se hace clic en un enlace
+  const menuLinks = menu.querySelectorAll("a");
+  menuLinks.forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("active");
+      toggleBtn.textContent = "☰";
     });
-  </script>
+  });
+</script>
 </body>
 </html>
