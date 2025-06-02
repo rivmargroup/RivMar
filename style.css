@@ -63,6 +63,12 @@ nav ul li a {
   margin-left: auto; /* 👈 Empuja el ícono totalmente a la derecha */
 }
 
+.about-text {
+  font-size: 18px;
+  line-height: 1.7;
+  text-align: left;
+  word-spacing: normal;
+}
 
 @media (max-width: 768px) {
   nav ul {
