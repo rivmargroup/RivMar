@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   const loginBtn = document.getElementById("loginBtn");
   const createBtn = document.getElementById("createAccountBtn");
@@ -23,5 +22,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   loginBtn.addEventListener("click", () => {
     alert("Logging in...");
+  });
+
+  // 👉 Código del ícono del menú
+  const menuToggle = document.getElementById("menu-toggle");
+  const navMenu = document.getElementById("menu");
+
+  menuToggle.addEventListener("click", () => {
+    navMenu.classList.toggle("active");
+    menuToggle.textContent = navMenu.classList.contains("active") ? "✖" : "☰";
   });
 });
