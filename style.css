@@ -65,17 +65,17 @@ nav ul li a {
 @media (max-width: 768px) {
   nav ul {
     flex-direction: column;
-    background-color: #003049;
-    position: fixed;
+    background-color: #002f4b;
+    position: fixed; /* cambia a fixed */
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
     display: none;
-    justify-content: center;
+    padding-top: 100px; /* empuja desde arriba */
+    padding-left: 40px; /* aleja del borde izquierdo */
+    gap: 24px;
     align-items: flex-start;
-    padding: 80px 40px; /* ← separamos del borde izquierdo */
-    gap: 24px;           /* ← espacio entre ítems */
     z-index: 999;
   }
 
@@ -85,9 +85,8 @@ nav ul li a {
 
   nav ul li a {
     font-size: 20px;
+    font-weight: 600;
     color: #fff;
-    text-decoration: none;
-    font-weight: bold;
   }
 
   .menu-toggle {
@@ -99,6 +98,7 @@ nav ul li a {
     z-index: 1000;
   }
 }
+
 
 
 /* Hero */
