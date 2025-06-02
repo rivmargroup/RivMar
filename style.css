@@ -67,7 +67,7 @@ nav ul li a {
     flex-direction: column;
     background-color: #002f4b;
     position: fixed;
-    top: 0;
+    top: 30;
     left: 0;
     width: 100vw;
     height: 100vh;
@@ -75,7 +75,7 @@ nav ul li a {
     justify-content: center;
     align-items: center;
     gap: 24px;
-    padding: 200px 80px 60;
+    padding: 80px 60;
     z-index: 999;
   }
 
