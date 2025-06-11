@@ -73,6 +73,14 @@ nav ul li a {
   text-align: left;
   word-spacing: normal;
 }
+.intro-text {
+  font-size: 18px;
+  line-height: 1.7;
+  text-align: center;
+  color: #333;
+  max-width: 900px;
+  margin: 0 auto 30px auto;
+}
 
 @media (max-width: 768px) {
   nav ul {
