@@ -75,12 +75,22 @@ nav ul li a {
 }
 .intro-text {
   font-size: 18px;
-  line-height: 1.7;
+  line-height: 1.8;
   text-align: center;
   color: #333;
-  max-width: 900px;
-  margin: 0 auto 30px auto;
+  max-width: 850px;
+  margin: 50px auto 50px auto;
+  padding: 0 20px;
 }
+.intro-text strong {
+  color: #003049;
+}
+.intro-text em {
+  color: #0077b6;
+  font-style: normal;
+  font-weight: 500;
+}
+
 
 @media (max-width: 768px) {
   nav ul {
