@@ -82,6 +82,14 @@ nav ul li a {
   margin: 50px auto 50px auto;
   padding: 0 20px;
 }
+.intro-box {
+  background: #ffffff;
+  padding: 40px 20px;
+  margin-bottom: 50px;
+  border-radius: 12px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.05);
+}
+
 .intro-text strong {
   color: #003049;
 }
