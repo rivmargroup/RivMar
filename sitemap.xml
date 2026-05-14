@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://rivmargroup.com/</loc>
+    <lastmod>2026-05-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://rivmargroup.com/assets/main.png</image:loc>
+      <image:title>Premium EVA Foam Boat Flooring by RivMar Group — Sarasota, Florida</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rivmargroup.com/assets/eva-foam-boat-decking-project.png</image:loc>
+      <image:title>Custom EVA Foam Marine Decking Installation Project</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rivmargroup.com/assets/custom-jet-ski-decking-eva-foam.png</image:loc>
+      <image:title>Custom Jet Ski EVA Foam Decking &amp; Traction Mats</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rivmargroup.com/assets/marine-flooring-red-boat-sarasota.png</image:loc>
+      <image:title>Red Boat Marine Flooring Project — Sarasota, FL</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://rivmargroup.com/assets/before-after-marine-flooring-restoration.png</image:loc>
+      <image:title>Before &amp; After — EVA Foam Boat Flooring Restoration</image:title>
+    </image:image>
+  </url>
+</urlset>
