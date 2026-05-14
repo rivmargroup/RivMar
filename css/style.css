@@ -322,7 +322,6 @@ a { text-decoration: none; color: inherit; }
 
 /* Image card variant */
 .bento-card.img-card {
-    padding: 0;
     min-height: 400px;
 }
 
@@ -347,6 +346,15 @@ a { text-decoration: none; color: inherit; }
 .bento-card .card-content {
     position: relative;
     z-index: 2;
+}
+
+.bento-card.img-card {
+    padding: 36px 36px 44px;
+    justify-content: flex-end;
+}
+
+.bento-card.img-card .card-content {
+    max-width: 90%;
 }
 
 .bento-card.img-card .card-content { color: #fff; }
