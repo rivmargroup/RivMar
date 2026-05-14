@@ -6,12 +6,12 @@
     <title>Thank You — RivMar Group</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background: #272729;
+            background: #001b3d;
             color: #fff;
             min-height: 100vh;
             display: flex;
@@ -20,15 +20,49 @@
             text-align: center;
             padding: 24px;
         }
-        h1 { font-size: clamp(28px, 5vw, 40px); font-weight: 600; letter-spacing: -0.01em; margin-bottom: 12px; }
-        p { font-size: 17px; color: rgba(255,255,255,0.7); margin-bottom: 32px; }
-        a { color: #2997ff; font-size: 17px; }
+        .card {
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 24px;
+            padding: 48px 40px;
+            max-width: 480px;
+            width: 100%;
+        }
+        .card .check {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+        h1 {
+            font-size: clamp(24px, 4vw, 32px);
+            font-weight: 600;
+            letter-spacing: -0.015em;
+            margin-bottom: 12px;
+        }
+        p {
+            font-size: 17px;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+        a {
+            display: inline-block;
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+            padding: 12px 28px;
+            border-radius: 9999px;
+            font-size: 15px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background 0.2s ease;
+        }
+        a:hover { background: rgba(255,255,255,0.18); }
     </style>
 </head>
 <body>
-    <div>
+    <div class="card">
+        <div class="check">&#10004;</div>
         <h1>Thank you for reaching out</h1>
-        <p>We'll get back to you within 24 hours.</p>
+        <p>Your request has been received. A design engineer will get back to you within 24 hours.</p>
         <a href="/">Back to RivMar Group</a>
     </div>
 </body>

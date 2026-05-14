@@ -24,7 +24,7 @@ const observer = new IntersectionObserver((entries) => {
             observer.unobserve(entry.target);
         }
     });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+}, { threshold: 0.12, rootMargin: '0px 0px -36px 0px' });
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
@@ -39,11 +39,15 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Global nav background — fully opaque on scroll
+// Global nav — scrolled state
 const globalNav = document.getElementById('globalNav');
 
 window.addEventListener('scroll', () => {
-    globalNav.style.background = window.scrollY > 20 ? 'rgba(0,0,0,0.94)' : 'rgba(0,0,0,0.92)';
+    if (window.scrollY > 20) {
+        globalNav.classList.add('scrolled');
+    } else {
+        globalNav.classList.remove('scrolled');
+    }
 });
 
 // Lightbox
