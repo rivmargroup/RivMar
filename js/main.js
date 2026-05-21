@@ -94,3 +94,41 @@ lightbox.addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') closeLightbox();
 });
+
+// Mobile sticky CTA bar — hide when contact form is visible
+const mobileCtaBar = document.getElementById('mobileCtaBar');
+const contactSection = document.getElementById('contact');
+
+if (mobileCtaBar && contactSection) {
+    const ctaObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                mobileCtaBar.style.transform = 'translateY(100%)';
+                mobileCtaBar.style.opacity = '0';
+            } else {
+                mobileCtaBar.style.transform = 'translateY(0)';
+                mobileCtaBar.style.opacity = '1';
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+    ctaObserver.observe(contactSection);
+}
+
+// Hide mobile CTA bar when footer is visible
+const footer = document.querySelector('.footer');
+if (mobileCtaBar && footer) {
+    const footerObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                mobileCtaBar.style.transform = 'translateY(100%)';
+                mobileCtaBar.style.opacity = '0';
+            } else {
+                mobileCtaBar.style.transform = 'translateY(0)';
+                mobileCtaBar.style.opacity = '1';
+            }
+        });
+    }, { threshold: 0 });
+
+    footerObserver.observe(footer);
+}
