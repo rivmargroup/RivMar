@@ -16,7 +16,7 @@ navLinks.querySelectorAll('a').forEach(link => {
     });
 });
 
-// Scroll reveal — Intersection Observer
+// Scroll reveal
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -39,15 +39,10 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// Global nav — scrolled state
+// Global nav scrolled state
 const globalNav = document.getElementById('globalNav');
-
 window.addEventListener('scroll', () => {
-    if (window.scrollY > 20) {
-        globalNav.classList.add('scrolled');
-    } else {
-        globalNav.classList.remove('scrolled');
-    }
+    globalNav.classList.toggle('scrolled', window.scrollY > 20);
 });
 
 // FAQ Accordion
@@ -55,12 +50,8 @@ document.querySelectorAll('.faq-question').forEach(btn => {
     btn.addEventListener('click', () => {
         const item = btn.parentElement;
         const isOpen = item.classList.contains('open');
-
-        // Close all
         document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
-        btn.setAttribute('aria-expanded', 'false');
-
-        // Open clicked (if wasn't already open)
+        document.querySelectorAll('.faq-question').forEach(el => el.setAttribute('aria-expanded', 'false'));
         if (!isOpen) {
             item.classList.add('open');
             btn.setAttribute('aria-expanded', 'true');
@@ -88,47 +79,22 @@ function closeLightbox() {
 }
 
 lightboxClose.addEventListener('click', closeLightbox);
-lightbox.addEventListener('click', (e) => {
-    if (e.target === lightbox) closeLightbox();
-});
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeLightbox();
-});
+lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
 
-// Mobile sticky CTA bar — hide when contact form is visible
+// Mobile CTA bar — hide when contact/footer visible
 const mobileCtaBar = document.getElementById('mobileCtaBar');
 const contactSection = document.getElementById('contact');
-
-if (mobileCtaBar && contactSection) {
-    const ctaObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                mobileCtaBar.style.transform = 'translateY(100%)';
-                mobileCtaBar.style.opacity = '0';
-            } else {
-                mobileCtaBar.style.transform = 'translateY(0)';
-                mobileCtaBar.style.opacity = '1';
-            }
-        });
-    }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-
-    ctaObserver.observe(contactSection);
-}
-
-// Hide mobile CTA bar when footer is visible
 const footer = document.querySelector('.footer');
-if (mobileCtaBar && footer) {
-    const footerObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                mobileCtaBar.style.transform = 'translateY(100%)';
-                mobileCtaBar.style.opacity = '0';
-            } else {
-                mobileCtaBar.style.transform = 'translateY(0)';
-                mobileCtaBar.style.opacity = '1';
-            }
-        });
-    }, { threshold: 0 });
 
-    footerObserver.observe(footer);
+if (mobileCtaBar) {
+    const hideCTA = (entries) => {
+        entries.forEach(entry => {
+            const hidden = entry.isIntersecting;
+            mobileCtaBar.style.transform = hidden ? 'translateY(100%)' : 'translateY(0)';
+            mobileCtaBar.style.opacity = hidden ? '0' : '1';
+        });
+    };
+    if (contactSection) new IntersectionObserver(hideCTA, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' }).observe(contactSection);
+    if (footer) new IntersectionObserver(hideCTA, { threshold: 0 }).observe(footer);
 }
